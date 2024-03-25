@@ -1,9 +1,10 @@
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Text } from "react-native";
+import React from "react";
 
 function Home(){
     return(
         <SafeAreaView>
-            
+            <Text>This is home</Text>
         </SafeAreaView>
     )
 }

@@ -1,22 +1,12 @@
 import { SafeAreaView, Text } from "react-native";
+import Router from "./src/pages/Router";
+import { NavigationContainer } from "@react-navigation/native";
 
 function App() {
   return(
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "lightgreen",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
-
-        <Text>
-          HELLO!
-          THIS IS PLANT APP
-        </Text>
-
-    </SafeAreaView>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   )
 }
 
