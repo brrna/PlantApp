@@ -96,8 +96,13 @@ const styles = StyleSheet.create({
 
     },
     texts: {
-        fontSize: hp(2.75),
-        color: "#555F80"
+        fontSize: hp(2.85),
+        color: "#555F80",
+        fontWeight:"bold",
+        fontStyle:"italic",
+        textShadowColor: 'rgba(0, 0, 0, 0.40)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 2,
     },
     toucahableopacityget: {
         width: wp(80), 
