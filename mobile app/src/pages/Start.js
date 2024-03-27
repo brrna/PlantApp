@@ -14,7 +14,7 @@ function Start({ setSplash }) {
     return (
         <SafeAreaView style={styles.safecontainer}>
             <View style={styles.firstview}>
-                <Image style={styles.leapimage} source={require("../images/pngFirstPage.png")} />
+                <Image style={styles.leapimage} source={require("../assests/images/pngFirstPage.png")} />
                 <View style={styles.welcomeinsadeview}>
                     <View style={styles.welcomeview}>
                         <Text style={styles.welcometext}>WELCOME !</Text>
