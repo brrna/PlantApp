@@ -1,18 +1,18 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, View, ImageBackground } from "react-native";
+import { SafeAreaView, Text, StyleSheet, View, ImageBackground, Image } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import MyCard from "../component/myCard/MyCard";
 
 function Home() {
     return (
         <SafeAreaView style={styles.container} >
-           <ImageBackground
-                source={require("../assests/images/plantBackground.png")}
-                style={styles.background}
-                resizeMode="center">
-                    <View style={styles.header} >
+
+            <View style={styles.header} >
                 <Text style={styles.headerText} >LeafLove</Text>
             </View>
-            </ImageBackground> 
+
+            <MyCard/> 
+
         </SafeAreaView>
     )
 }
@@ -20,12 +20,7 @@ function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white"
-    },
-    background: {
-        backgroundColor: "lightred",
-        width: wp(100),
-        height: hp(100)
+        backgroundColor: "white",
     },
     header: {
         width: wp(100),
