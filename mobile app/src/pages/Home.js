@@ -1,17 +1,16 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, View, ImageBackground, Image } from "react-native";
+import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyCard from "../component/myCard/MyCard";
+import MySearch from "../component/mySearch/MySearch";
 
 function Home() {
     return (
         <SafeAreaView style={styles.container} >
 
-            <View style={styles.header} >
-                <Text style={styles.headerText} >LeafLove</Text>
-            </View>
+            <MySearch />
 
-            <MyCard/> 
+            <MyCard />
 
         </SafeAreaView>
     )
@@ -21,16 +20,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white",
-    },
-    header: {
-        width: wp(100),
-        height: hp(13),
-        backgroundColor: "yellow"
-    },
-    headerText: {
-        fontSize: hp(4),
-        fontWeight: "bold",
-        color: "gray"
     }
 })
 
