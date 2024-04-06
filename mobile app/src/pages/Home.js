@@ -4,6 +4,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import MyCard from "../component/myCard/MyCard";
 import MySearch from "../component/mySearch/MySearch";
 import MyHeader from "../component/myHeader/MyHeader";
+import SecondHeader from "../component/secondHeader/SecondHeader";
 
 function Home() {
     return (
