@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { SearchBar } from "react-native-screens";
 
 export default function createStyles() {
     return StyleSheet.create({
@@ -11,20 +10,34 @@ export default function createStyles() {
             alignItems: "center",
             justifyContent: "center"
         },
+        shadow: {
+            shadowColor: "gray",
+            shadowOffset: {
+                width: 0,
+                height: 8,
+            },
+            shadowOpacity: 0.5,
+            shadowRadius: 1,
+        },
         search: {
             backgroundColor: "white",
             width: wp(65),
-            height: hp(4),
+            height: hp(3),
             borderRadius: 7,
             flexDirection: "row",
-            borderColor: "gray",
-            borderWidth: 1
+            alignItems: "center",
+            justifyContent: "center",
+            borderColor: "white",
+            borderWidth: 1,
+            elevation: 5
         },
         iconView: {
-            backgroundColor: "yellow",
-            height: hp(4),
+            backgroundColor: "white",
+            height: hp(3),
             width: wp(6),
-            marginLeft: wp(1)
+            marginLeft: wp(1),
+            justifyContent: "center",
+            alignItems: "center"
         },
         icon: {
             color: "gray",
@@ -33,7 +46,10 @@ export default function createStyles() {
             backgroundColor: "white",
             height: hp(3),
             width: wp(57),
-            marginRight: wp(1)
+            marginRight: wp(1),
+            color: "black",
+            fontWeight: "normal",
+            fontSize: 15,
         }
     })
 }
