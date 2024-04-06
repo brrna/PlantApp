@@ -6,9 +6,9 @@ export default function createStyles() {
         container: {
             backgroundColor: "white",
             width: wp(100),
-            height: hp(10),
+            height: hp(6),
             alignItems: "center",
-            justifyContent: "center"
+           
         },
         shadow: {
             shadowColor: "gray",
