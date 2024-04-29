@@ -35,7 +35,6 @@ function Router() {
                             iconName = focused ? 'camera' : 'camera-outline';
                         } else if (route.name === 'Profile') {
                             iconName = focused ? 'settings' : 'settings-outline';
-                        
                         }
                         else if (route.name === 'Start') {
                             iconName = focused ? 'settings' : 'settings-outline';
