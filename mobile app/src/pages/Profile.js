@@ -1,13 +1,14 @@
-import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacity } from "react-native";
+import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacity, TextInput } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
+import DropShadow from "react-native-drop-shadow";
 
 function Profile() {
     return (
         <SafeAreaView style={styles.container} >
             <View
                 style={styles.top}>
-                <MyHeader />
+                <MyHeader headerText={"LeafLove"} />
 
                 <View style={styles.imageView}>
                     <Image
@@ -22,31 +23,91 @@ function Profile() {
                 </View>
 
                 <View style={styles.textContainer}>
-                    <Pressable
+                    <View
                         style={styles.textView}>
-                            <Image 
+                        <Image
                             source={require("../assests/images/leafIcon.png")} />
 
-                            <Text style={styles.text}>54</Text>
+                        <Text style={styles.textStyle}>54</Text>
 
-                            <Text style={styles.text}>My Plants</Text>
-                    </Pressable>
+                        <Text style={styles.textStyle}>My Plants</Text>
+                    </View>
 
-                    <Pressable
+                    <View
                         style={styles.textView}>
                         <Image source={(require("../assests/images/starIcon.png"))} />
 
-                        <Text style={styles.text}>54</Text>
+                        <View style={styles.text} >
+                            <Text style={styles.textStyle}>54</Text>
 
-                        <Text style={styles.text}>Favorite</Text>
-                    </Pressable>
+                            <Text style={styles.textStyle}>Favorite</Text>
+                        </View>
+                    </View>
                 </View>
             </View>
 
 
             <View
                 style={styles.bottom}>
+                <View style={styles.mailContainer} >
+                    <DropShadow style={styles.shadow} >
+                        <View style={styles.mailView}>
+                            <View style={styles.mailTop}>
+                                <Image source={require("../assests/images/mail.png")}
+                                    style={{ marginLeft: wp(2) }} />
+
+                                <Text style={{ marginLeft: wp(6), color: "rgba(0, 0, 0, 0.56)" }}>Email</Text>
+                            </View>
+                            <View style={styles.inputView} >
+                            </View>
+                        </View>
+                    </DropShadow>
+
+                    <DropShadow style={styles.shadow}>
+                        <View style={styles.mailView}>
+                            <View style={styles.mailTop}>
+                                <Image source={require("../assests/images/user2.png")}
+                                    style={{ marginLeft: wp(2) }} />
+
+                                <Text style={{ marginLeft: wp(6), color: "rgba(0, 0, 0, 0.56)" }}>Nickname</Text>
+                            </View>
+                            <View style={styles.inputView} >
+                            </View>
+                        </View>
+                    </DropShadow>
+
                 </View>
+                <View style={styles.plants} >
+                    <View style={styles.buttonView} >
+                        <View style={styles.button}>
+                            <View style={styles.iconView} >
+                                <View style={styles.buttonIcon} >
+                                    <Image
+                                        source={require("../assests/images/star2.png")}
+                                        style={{ resizeMode: "contain" }} />
+                                </View>
+                            </View>
+                            <View style={styles.buttonName}>
+                                <Text style={styles.buttonText}>Favorites</Text>
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={styles.buttonView} >
+                        <View style={styles.button}>
+                            <View style={styles.iconView} >
+                                <View style={styles.buttonIcon} >
+                                    <Image
+                                        source={require("../assests/images/leaf2.png")} />
+                                </View>
+                            </View>
+                            <View style={styles.buttonName}>
+                                <Text style={styles.buttonText}>My Plants</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </View>
 
         </SafeAreaView>
     )
@@ -99,17 +160,113 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
     },
+    textStyle: {
+        fontSize: 14,
+        fontWeight: "400",
+        color: "rgba(0, 0, 0, 0.59)"
+    },
     text: {
-        fontSize: 14, 
-        fontWeight: "400", 
-        color:"rgba(0, 0, 0, 0.59)"
+        backgroundColor: "rgba(194, 233, 198, 0.0)",
+        flexDirection: "row",
+        width: wp(27),
+        justifyContent: "space-around"
     },
     bottom: {
-        backgroundColor: "yellow",
-        height: hp(50),
+        backgroundColor: "white",
+        height: hp(42),
         width: wp(100),
+        justifyContent: "space-evenly",
+        alignItems: "center"
+    },
+    mailContainer: {
+        backgroundColor: "white",
+        height: hp(18),
+        width: wp(85),
+        justifyContent: "space-between"
+    },
+    shadow: {
+        shadowColor: "gray",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 1,
+    },
+    mailView: {
+        backgroundColor: "white",
+        width: wp(85),
+        height: hp(7)
+    },
+    mailTop: {
+        backgroundColor: "white",
+        height: hp(3),
+        width: wp(85),
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    inputView: {
+        backgroundColor: "white",
+        height: hp(4),
+        width: wp(85)
+    },
+    plants: {
+        backgroundColor: "white",
+        height: hp(18),
+        width: wp(70),
+        marginRight: wp(9)
+    },
+    buttonView: {
+        backgroundColor: "white",
+        height: hp(9),
+        width: wp(71),
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    iconView: {
+        backgroundColor: "white",
+        height: hp(8),
+        width: wp(16),
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 1000
+    },
+    buttonIcon: {
+        backgroundColor: "rgba(188, 243, 210, 1)",
+        borderColor: "rgba(87, 172, 96, 1)",
+        borderWidth: 2,
+        height: hp(6),
+        width: wp(12),
+        borderRadius: 1000,
         justifyContent: "center",
         alignItems: "center"
+    },
+    button: {
+        backgroundColor: "rgba(188, 243, 210, 1)",
+        borderEndColor: "rgba(87, 172, 96, 1)",
+        borderBlockColor: "rgba(87, 172, 96, 1)",
+        borderStartColor: "white",
+        borderWidth: 2,
+        height: hp(6),
+        width: wp(75),
+        borderRadius: 30,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    buttonName: {
+        backgroundColor: "rgba(255, 255, 255, 0)",
+        width: wp(75),
+        height: hp(5),
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    buttonText: {
+        color: "rgba(0, 0, 0, 0.6)", 
+        fontWeight: "400", 
+        fontSize: 16,
+        marginRight: wp(29)
     }
 })
 

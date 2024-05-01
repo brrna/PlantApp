@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import createStyles from "./MyHeaderStyle";
 
-function MyHeader() {
+function MyHeader({headerText}) {
 
     const styles = createStyles()
 
@@ -12,7 +12,7 @@ function MyHeader() {
 
             <View style={styles.viewTop} ></View>
 
-            <Text style={styles.text} >LeafLove</Text>
+            <Text style={styles.text} >{headerText}</Text>
 
         </View> 
     )
