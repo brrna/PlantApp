@@ -94,7 +94,7 @@ function Profile({navigation}) {
                                 </View>
                             </View>
                             <View style={styles.buttonName}>
-                                <Text style={styles.buttonText}>Favorites</Text>
+                                <Text style={styles.buttonText}>Favourites</Text>
                             </View>
                         </Pressable>
                     </View>

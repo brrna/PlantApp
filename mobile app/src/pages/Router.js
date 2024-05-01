@@ -6,7 +6,7 @@ import Camera from "./Camera";
 import Profile from "./Profile";
 import Icon from "react-native-vector-icons/Ionicons";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Favorites from "./Favorites";
+import Favorites from "./Favourites";
 import myPlants from "./MyPlants";
 
 

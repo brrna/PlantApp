@@ -1,16 +1,15 @@
-import { SafeAreaView, TouchableOpacity, Text } from "react-native";
+import { SafeAreaView } from "react-native";
+import MySecondHeader from "../component/myBackHeader/MySecondHeader";
 
 function MyPlants({navigation}) {
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
-            <TouchableOpacity
-                    style={{height: 50, width: 50, backgroundColor: "red"}}
-                    onPress={() =>navigation.navigate('ProfileScreen')}>
-                        <Text>X</Text>
-                </TouchableOpacity>
+            
+            <MySecondHeader 
+                headerText={"My Plants"} 
+                onPress={() => navigation.navigate('ProfileScreen')} />
 
-                <Text>bitkilerim</Text>
         </SafeAreaView>
     )
 }
-export default MyPlants;
+export default MyPlants
