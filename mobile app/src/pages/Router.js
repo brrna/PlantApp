@@ -5,30 +5,22 @@ import Home from "./Home";
 import Camera from "./Camera";
 import Profile from "./Profile";
 import Icon from "react-native-vector-icons/Ionicons";
-import Start from "./Start";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Favorites from "./Favorites";
+import myPlants from "./MyPlants";
 
 
 function Router() {
 
-
     const Tab = createBottomTabNavigator();
     const Stack = createNativeStackNavigator();
 
-    const CustomTabBarButton = ({ children, onPress }) => (
-        <TouchableOpacity
-            style={{
-                top: -20
-
-            }}>
-
-        </TouchableOpacity>
-    )
-
-    const StartStack = () => {
-        return (
-            <Stack.Navigator>
-                <Stack.Screen name="Start" component={Start} />
+    const ProfileStack = () => {
+        return(
+            <Stack.Navigator screenOptions={{headerShown: false}} >
+                <Stack.Screen name="ProfileScreen" component={Profile} />
+                <Stack.Screen name="Favorites" component={Favorites} />
+                <Stack.Screen name="MyPlants" component={myPlants} />
             </Stack.Navigator>
         )
     }
@@ -68,7 +60,7 @@ function Router() {
                         </View>
                     )
                 }} />
-            <Tab.Screen name="Profile" component={Profile}
+            <Tab.Screen name="ProfileStack" component={ProfileStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Icon name={focused ? 'person-circle-outline' : 'person-circle'} size={hp(4)} color="#2C6817" />

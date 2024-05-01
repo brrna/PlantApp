@@ -2,8 +2,12 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacit
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
 import DropShadow from "react-native-drop-shadow";
+import { useNavigation } from "@react-navigation/native";
 
-function Profile() {
+function Profile({navigation}) {
+
+    
+
     return (
         <SafeAreaView style={styles.container} >
             <View
@@ -79,7 +83,9 @@ function Profile() {
                 </View>
                 <View style={styles.plants} >
                     <View style={styles.buttonView} >
-                        <View style={styles.button}>
+                        <Pressable 
+                            style={styles.button}
+                            onPress={() => navigation.navigate('Favorites')}>
                             <View style={styles.iconView} >
                                 <View style={styles.buttonIcon} >
                                     <Image
@@ -90,11 +96,13 @@ function Profile() {
                             <View style={styles.buttonName}>
                                 <Text style={styles.buttonText}>Favorites</Text>
                             </View>
-                        </View>
+                        </Pressable>
                     </View>
 
                     <View style={styles.buttonView} >
-                        <View style={styles.button}>
+                        <Pressable 
+                            style={styles.button}
+                            onPress={() => navigation.navigate('MyPlants')}>
                             <View style={styles.iconView} >
                                 <View style={styles.buttonIcon} >
                                     <Image
@@ -104,7 +112,7 @@ function Profile() {
                             <View style={styles.buttonName}>
                                 <Text style={styles.buttonText}>My Plants</Text>
                             </View>
-                        </View>
+                        </Pressable>
                     </View>
                 </View>
             </View>
