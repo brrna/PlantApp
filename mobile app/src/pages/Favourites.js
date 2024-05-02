@@ -3,6 +3,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import MySecondHeader from "../component/myBackHeader/MySecondHeader";
 import MySearch from "../component/mySearch/MySearch";
 import WhiteButton from "../component/whiteButton/WhiteButton";
+import MiniCard from "../component/myMiniCard/MiniCard";
 
 function Favorites({ navigation }) {
     return (
@@ -25,6 +26,10 @@ function Favorites({ navigation }) {
 
             </View>
 
+            <View style={styles.cardView} >
+            
+            </View>
+
         </SafeAreaView>
     )
 }
@@ -43,6 +48,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         paddingLeft: wp(9),
         paddingRight: wp(9)
+    },
+    cardView: {
+        backgroundColor: "white",
+        width: wp(100),
+        height: hp(64)
     }
 })
 
