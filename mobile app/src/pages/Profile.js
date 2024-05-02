@@ -2,12 +2,8 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacit
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
 import DropShadow from "react-native-drop-shadow";
-import { useNavigation } from "@react-navigation/native";
 
 function Profile({navigation}) {
-
-    
-
     return (
         <SafeAreaView style={styles.container} >
             <View

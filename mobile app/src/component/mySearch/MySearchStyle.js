@@ -4,7 +4,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 export default function createStyles() {
     return StyleSheet.create({
         container: {
-            backgroundColor: "white",
+            backgroundColor: "rgba(255, 255, 255, 0)",
             width: wp(100),
             height: hp(6),
             alignItems: "center",
@@ -17,7 +17,7 @@ export default function createStyles() {
                 height: 8,
             },
             shadowOpacity: 0.5,
-            shadowRadius: 1,
+            shadowRadius: 1
         },
         search: {
             backgroundColor: "white",
