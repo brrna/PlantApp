@@ -92,7 +92,10 @@ const styles = StyleSheet.create({
     welcometext: {
         color: "#000000",
         fontSize: hp(3.5),
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textShadowColor: 'rgba(0, 0, 0, 0.40)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 2,
 
     },
     texts: {
