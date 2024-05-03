@@ -8,6 +8,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Favorites from "./Favourites";
 import myPlants from "./MyPlants";
+import Signin from "./Signin";
+import Signup from "./Signup";
 
 
 function Router() {
@@ -16,8 +18,8 @@ function Router() {
     const Stack = createNativeStackNavigator();
 
     const ProfileStack = () => {
-        return(
-            <Stack.Navigator screenOptions={{headerShown: false}} >
+        return (
+            <Stack.Navigator screenOptions={{ headerShown: false }} >
                 <Stack.Screen name="ProfileScreen" component={Profile} />
                 <Stack.Screen name="Favorites" component={Favorites} />
                 <Stack.Screen name="MyPlants" component={myPlants} />
@@ -25,70 +27,87 @@ function Router() {
         )
     }
 
-    return (
-        <Tab.Navigator
+    const HomeTabs = () => {
+        return (
+            <Tab.Navigator
 
-            screenOptions={{
-                headerShown:false,
-                tabBarShowLabel: false,
-                tabBarStyle: {
-                    position: 'absolute',
-                    bottom: hp(0),
-                    left: hp(0),
-                    right: hp(0),
-                    elevation: 0,
-                    backgroundColor: '#D4EBD2',
-                    height: hp(6.5),
-                }
-            }}
-
-        >
-            <Tab.Screen name="Home" component={Home}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Icon name={focused ? 'home-outline' : 'home'} size={hp(3.75)} color="#2C6817" />
-                    )
-
-                }} />
-            <Tab.Screen name="Camera" component={Camera}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View style={styles.whiteview}>
-                            <View style={styles.greenview}>
-                                <Icon name={focused ? 'camera-outline' : 'camera'} size={hp(3.75)} color="#2C6817" />
-                            </View>
-                        </View>
-                    )
-                }} />
-            <Tab.Screen name="ProfileStack" component={ProfileStack}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Icon name={focused ? 'person-circle-outline' : 'person-circle'} size={hp(4)} color="#2C6817" />
-                    )
-
+                screenOptions={{
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarStyle: {
+                        position: 'absolute',
+                        bottom: hp(0),
+                        left: hp(0),
+                        right: hp(0),
+                        elevation: 0,
+                        backgroundColor: '#D4EBD2',
+                        height: hp(6.5),
+                    }
                 }}
-            />
-        </Tab.Navigator>
+
+            >
+                <Tab.Screen name="Home" component={Home}
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <Icon name={focused ? 'home-outline' : 'home'} size={hp(3.75)} color="#2C6817" />
+                        )
+
+                    }} />
+                <Tab.Screen name="Camera" component={Camera}
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <View style={styles.whiteview}>
+                                <View style={styles.greenview}>
+                                    <Icon name={focused ? 'camera-outline' : 'camera'} size={hp(3.75)} color="#2C6817" />
+                                </View>
+                            </View>
+                        )
+                    }} />
+                <Tab.Screen name="ProfileStack" component={ProfileStack}
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <Icon name={focused ? 'person-circle-outline' : 'person-circle'} size={hp(4)} color="#2C6817" />
+                        )
+
+                    }}
+                />
+            </Tab.Navigator >
+
+        )
+    }
+
+    return (
+
+        <Stack.Navigator screenOptions={{ headerShown: false }}>   
+
+            <Stack.Screen name={"Signin"} component={Signin} />
+
+            <Stack.Screen name={"Signup"} component={Signup} />
+
+            <Stack.Screen name={"HomeTabs"} component={HomeTabs} />
+
+        </Stack.Navigator>
+
     )
 }
 
 const styles = StyleSheet.create({
     whiteview: {
         borderRadius: 999,
-         width: wp(16.5), 
-         height: hp(8), 
-         backgroundColor: "white",
-         marginBottom: 40
+        width: wp(16.5),
+        height: hp(8),
+        backgroundColor: "white",
+        marginBottom: 40
 
 
     },
-    greenview:{
-        width: wp(14), 
-        height: hp(7), 
-        borderRadius: 9999, 
-        backgroundColor: "#D4EBD2", 
-        justifyContent: "center", 
-        alignItems: "center", 
+    greenview: {
+        width: wp(14),
+        height: hp(7),
+        borderRadius: 9999,
+        backgroundColor: "#D4EBD2",
+        justifyContent: "center",
+        alignItems: "center",
         alignSelf: "center"
 
     }
