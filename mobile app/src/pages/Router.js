@@ -10,12 +10,14 @@ import Favorites from "./Favourites";
 import myPlants from "./MyPlants";
 import Signin from "./Signin";
 import Signup from "./Signup";
-
+import { useNavigation } from '@react-navigation/native';
+import { useState } from "react";
 
 function Router() {
 
     const Tab = createBottomTabNavigator();
     const Stack = createNativeStackNavigator();
+    const [currentUser,setCurrentUser]=useState(""); //giriş çıkış denemesi için
 
     const ProfileStack = () => {
         return (
@@ -28,6 +30,7 @@ function Router() {
     }
 
     const HomeTabs = () => {
+        const navigation = useNavigation();
         return (
             <Tab.Navigator
 
@@ -78,7 +81,9 @@ function Router() {
 
     return (
 
-        <Stack.Navigator screenOptions={{ headerShown: false }}>   
+        <Stack.Navigator
+            initialRouteName={currentUser ? "HomeTabs" : "Signin"}
+            screenOptions={{ headerShown: false }}>
 
             <Stack.Screen name={"Signin"} component={Signin} />
 
