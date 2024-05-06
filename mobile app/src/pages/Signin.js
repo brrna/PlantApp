@@ -4,17 +4,16 @@ import Welcome from "../component/myWelcome/Welcome";
 import MyTextinput from "../component/myTextInput/MyTextinput";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import { useState } from "react";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 function Signin({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -500}
-        >
 
+        <KeyboardAwareScrollView enableOnAndroid={true}
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            contentContainerStyle={{ flexGrow: 1 }}>
             <SafeAreaView style={styles.container}>
                 <MyHeader />
                 <Welcome text={"WELCOME!"} />
@@ -40,7 +39,9 @@ function Signin({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
-        </KeyboardAvoidingView>
+
+        </KeyboardAwareScrollView>
+
     );
 }
 
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white",
-        alignItems: "center"
+        alignItems: "center",
+
     },
     imageplant: {
         marginTop: hp(1.75),
