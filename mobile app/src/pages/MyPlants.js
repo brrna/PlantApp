@@ -13,7 +13,7 @@ function MyPlants({ navigation }) {
                 headerText={"My Plants"}
                 onPress={() => navigation.navigate('ProfileScreen')} />
 
-            <MySearch />
+            <MySearch onPress={() => navigation.navigate('ProfileScreen')} />
 
             <View style={styles.buttonView} >
 

@@ -13,7 +13,7 @@ function Favorites({ navigation }) {
                 headerText={"Favourites"}
                 onPress={() => navigation.navigate('ProfileScreen')} />
 
-            <MySearch />
+            <MySearch onPress={() => navigation.navigate('ProfileScreen')} />
 
             <View style={styles.buttonView} >
 
