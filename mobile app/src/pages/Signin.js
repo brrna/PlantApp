@@ -34,7 +34,7 @@ function Signin({ navigation }) {
                 </TouchableOpacity>
                 <View style={styles.viewrows}>
                     <Text style={styles.textaccount}>Don't have an account?</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> navigation.navigate("Signup")}>
                         <Text style={styles.signuptext}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
