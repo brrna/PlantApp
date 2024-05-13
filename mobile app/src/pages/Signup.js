@@ -34,7 +34,7 @@ function Signup({ navigation }) {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.eyetextinput}>
-                        <MyTextinput value={confirmpassword} setValue={setConfirmpassword} placeholder={"Confirm your oassword"} />
+                        <MyTextinput value={confirmpassword} setValue={setConfirmpassword} placeholder={"Confirm your password"} />
                         <TouchableOpacity>
                             <Image style={styles.eyeimage} source={require("../assests/images/eye.png")} />
                         </TouchableOpacity>
@@ -44,9 +44,9 @@ function Signup({ navigation }) {
                             <Text style={styles.signuptext}> Sign up </Text>
                         </TouchableOpacity>
                         <View style={styles.viewrows}>
-                            <Text style={styles.textaccount}>Don't have an account?</Text>
-                            <TouchableOpacity>
-                                <Text style={styles.siginupblue} >Sign Up</Text>
+                            <Text style={styles.textaccount}>Already have an account?</Text>
+                            <TouchableOpacity onPress={()=> navigation.navigate("Signin")}>
+                                <Text style={styles.siginblue} >Sign In</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -71,10 +71,11 @@ const styles = StyleSheet.create({
     },
     textstyle: {
         fontSize: hp(2),
-        color: "#000000",
-        textShadowColor: 'rgba(0, 0, 0, 0.10)',
+        color: "rgba(0, 0, 0, 0.63)",
+        textShadowColor: 'rgba(0, 0, 0, 0.20)',
         textShadowOffset: { width: 2, height: 2 },
         textShadowRadius: 2,
+        fontWeight:"bold"
 
     },
     imagestyle: {
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
         marginTop: hp(2)
     },
     signuptext: {
-        color: "#1250AD",
+        color: "background: rgba(18, 80, 173, 0.69)",
         fontWeight: "bold",
         fontSize: hp(3)
     },
@@ -116,10 +117,11 @@ const styles = StyleSheet.create({
         gap: wp(1)
     },
     textaccount: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color:"background: rgba(77, 95, 121, 0.63)"
     },
-    siginupblue: {
-        color: "#1250AD",
+    siginblue: {
+        color: "background: rgba(18, 80, 173, 0.63);",
         fontWeight: "bold"
     }
 })

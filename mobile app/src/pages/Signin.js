@@ -90,16 +90,17 @@ const styles = StyleSheet.create({
         marginTop: hp(1.5)
     },
     signintext: {
-        color: "#1250ADB0",
-        fontWeight: "bold",
+        color: "background: rgba(18, 80, 173, 0.69);",
+        fontWeight:"bold",
         fontSize: hp(3)
     },
     signuptext: {
-        color: "#1250ADB0",
+        color: "background: rgba(18, 80, 173, 0.69);",
         fontWeight: "bold"
     },
     textaccount: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color:"background: rgba(77, 95, 121, 0.63);"
     }
 });
 
