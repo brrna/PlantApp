@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, View } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import Home from "./Home";
-import Camera from "./Camera";
+import Camera from "./Cameras";
 import Profile from "./Profile";
 import Icon from "react-native-vector-icons/Ionicons";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
