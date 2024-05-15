@@ -9,7 +9,7 @@ function Cameras() {
     const device = getCameraDevice(devices, 'back')
     const camera = useRef(null)
     const [imageData, setImageData] = useState("")
-    const [takePhotoClicked, setTakePhotoClicked] = useState(false)
+    const [takePhotoClicked, setTakePhotoClicked] = useState(true)
     const [cameraPermission, setCameraPermission] = useState(null)
 
     useEffect(() => {
@@ -44,20 +44,30 @@ function Cameras() {
                         isActive={true}
                         photo={true}
                     />
-                    <TouchableOpacity
-                        style={styles.button}
+                    <TouchableOpacity style={styles.button}
                         onPress={() => takePicture()}
-                    />
+                    >
+                        <Image style={styles.imagecamera} source={require("../assests/images/camera.png")} />
+
+                    </TouchableOpacity>
                 </View>
             ) : (
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                    {imageData !== '' && <Image source={{ uri: 'file://' + imageData }} style={{ width: "90%", height: 200 }} />}
-                    <TouchableOpacity
-                        onPress={() => setTakePhotoClicked(true)}
-                        style={{ width: '90%', height: 50, alignSelf: "center" }}
-                    >
-                        <Text>Take Photo</Text>
-                    </TouchableOpacity>
+                    {imageData !== '' && <Image source={{ uri: 'file://' + imageData }} style={styles.imagehome} />}
+                    <View style={styles.rowstyle}>
+                        <TouchableOpacity
+                            onPress={() => setTakePhotoClicked(true)}
+                            style={styles.buttonyeniden}
+                        >
+                            <Image style={styles.checkimage }source={require("../assests/images/refresh.png")}/>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <Image style={styles.checkimage} source={require("../assests/images/check-mark.png")}/>
+                        </TouchableOpacity>
+                       
+                    </View>
+
                 </View>
             )}
         </SafeAreaView>
@@ -76,6 +86,35 @@ const styles = StyleSheet.create({
         position: "absolute",
         alignSelf: "center",
         bottom: hp(13),
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    imagecamera: {
+        height: hp(7),
+        width: wp(14),
+        position: "absolute"
+    },
+    imagehome: {
+        width: ("90%"),
+        height: hp(40),
+        marginBottom: hp(15)
+    },
+    buttonyeniden: {
+        justifyContent: "center",
+        justifyContent:"center",
+        alignItems:"center",
+   
+
+    },
+    rowstyle:{
+        flexDirection:"row",
+        gap:wp(14),
+        alignItems:"center",
+        
+    },
+    checkimage:{
+        width:wp(14),
+        height:hp(7)
     }
 })
 
