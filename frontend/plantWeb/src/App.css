@@ -4,4 +4,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin-top: 20px;
+    height: 100vh;
+    background-color: grey;
+    margin-top: 0;
 }
