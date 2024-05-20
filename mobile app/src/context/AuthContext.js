@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 import { Base_URL } from "@env"
 import axios from 'axios'
@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+  const [splashLoading,setSplashLoading]=useState(false);
 
   const register = (email, nickname, password) => {
     setIsLoading(true);
@@ -72,6 +73,25 @@ export const AuthProvider = ({ children }) => {
   };
 
 
+  const isLoggedIn= async()=>{
+    try{
+      setSplashLoading(true)
+      let userInfo= await AsyncStorage.getItem('userInfo')
+      userInfo=JSON.parse(userInfo);
+      if(userInfo){
+        setUserInfo(userInfo)
+      }
+      setSplashLoading(false)
+    } catch(e){
+      console.log(`is an loogged error ${e}`)
+
+    }
+  };
+
+  useEffect(()=>{
+    isLoggedIn();
+  },[])
+
 
   return (
 
@@ -80,7 +100,9 @@ export const AuthProvider = ({ children }) => {
       isLoading,
       userInfo,
       login,
-      logout
+      logout,
+      isLoggedIn,
+      splashLoading
     }}>
       {children}
     </AuthContext.Provider>

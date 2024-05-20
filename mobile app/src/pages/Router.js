@@ -13,6 +13,7 @@ import Signup from "./Signup";
 import { useNavigation } from '@react-navigation/native';
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import SplashScreen from "./SplashScreen";
 
 function Router() {
 
@@ -20,7 +21,7 @@ function Router() {
     const Stack = createNativeStackNavigator();
     const [currentUser, setCurrentUser] = useState(""); //giriş çıkış denemesi için
 
-    const { userInfo } = useContext(AuthContext);
+    const { userInfo, splashLoading } = useContext(AuthContext);
 
     const ProfileStack = () => {
         return (
@@ -87,7 +88,11 @@ function Router() {
         <Stack.Navigator
             screenOptions={{ headerShown: false }}>
 
-            {
+            {splashLoading ?
+                (
+                    <Stack.Screen name={"SplashScreen"} component={SplashScreen} />
+                ) :
+
                 userInfo.token ? (
                     <Stack.Screen name={"HomeTabs"} component={HomeTabs} />
                 ) : (
@@ -98,7 +103,11 @@ function Router() {
 
                     </>
                 )
+
+
             }
+
+
 
 
 
