@@ -11,13 +11,16 @@ import myPlants from "./MyPlants";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import { useNavigation } from '@react-navigation/native';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Router() {
 
     const Tab = createBottomTabNavigator();
     const Stack = createNativeStackNavigator();
-    const [currentUser,setCurrentUser]=useState(""); //giriş çıkış denemesi için
+    const [currentUser, setCurrentUser] = useState(""); //giriş çıkış denemesi için
+
+    const { userInfo } = useContext(AuthContext);
 
     const ProfileStack = () => {
         return (
@@ -82,14 +85,22 @@ function Router() {
     return (
 
         <Stack.Navigator
-            initialRouteName={currentUser ? "HomeTabs" : "Signin"}
             screenOptions={{ headerShown: false }}>
 
-            <Stack.Screen name={"Signin"} component={Signin} />
+            {
+                userInfo.token ? (
+                    <Stack.Screen name={"HomeTabs"} component={HomeTabs} />
+                ) : (
+                    <>
+                        <Stack.Screen name={"Signin"} component={Signin} />
 
-            <Stack.Screen name={"Signup"} component={Signup} />
+                        <Stack.Screen name={"Signup"} component={Signup} />
 
-            <Stack.Screen name={"HomeTabs"} component={HomeTabs} />
+                    </>
+                )
+            }
+
+
 
         </Stack.Navigator>
 

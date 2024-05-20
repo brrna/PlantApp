@@ -6,6 +6,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import { useContext, useState } from "react";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { AuthContext } from "../context/AuthContext";
+import Spinner from "react-native-loading-spinner-overlay";
 
 function Signin({ navigation }) {
     const [email, setEmail] = useState("");
@@ -13,23 +14,25 @@ function Signin({ navigation }) {
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
 
+    const {login,isLoading} = useContext(AuthContext)
     const togglePasswordVisibility = () => {
         setSecureTextEntry(prev => !prev);
     };
 
-    const value= useContext(AuthContext)
+    
     return (
 
         <KeyboardAwareScrollView enableOnAndroid={true}
             resetScrollToCoords={{ x: 0, y: 0 }}
             contentContainerStyle={{ flexGrow: 1 }}>
             <SafeAreaView style={styles.container}>
+                <Spinner visible={isLoading}/>
                 <MyHeader />
                 <Welcome text={"WELCOME!"} />
                 <View>
                     <Image style={styles.imageplant} source={require("../assests/images/plantBackground.png")} />
                 </View>
-                <MyTextinput value={email} setValue={setEmail} placeholder={"Enter your nickname or email"} />
+                <MyTextinput value={email} setValue={setEmail} placeholder={"Enter your nickname"} />
                 <View style={styles.viewrow}>
                     <View style={styles.passwordContainer}>
                         <MyTextinput value={password} setValue={setPassword} placeholder={"Enter your password"} style={{ marginTop: hp(2.5) }} secureTextEntry={secureTextEntry} />
@@ -38,7 +41,7 @@ function Signin({ navigation }) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.viewtext} onPress={()=> navigation.navigate("HomeTabs")}>
+                <TouchableOpacity style={styles.viewtext} onPress={()=>{login(password,email)}}>
                     <Text style={styles.signintext}>Sign in</Text>
                 </TouchableOpacity>
                 <View style={styles.viewrows}>

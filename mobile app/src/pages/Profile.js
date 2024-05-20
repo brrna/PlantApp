@@ -2,10 +2,17 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacit
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
 import DropShadow from "react-native-drop-shadow";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Profile({navigation}) {
+
+    const { userInfo,logout } = useContext(AuthContext);
+   
+     
     return (
         <SafeAreaView style={styles.container} >
+            <TouchableOpacity style={{padding:20,backgroundColor:"red"}} onPress={logout}></TouchableOpacity>
             <View
                 style={styles.top}>
                 <MyHeader headerText={"LeafLove"} />
@@ -18,7 +25,7 @@ function Profile({navigation}) {
 
                     <Text
                         style={styles.userText}>
-                        Hello User
+                        {userInfo.user.NickName}
                     </Text>
                 </View>
 
