@@ -3,6 +3,7 @@ import Router from "./src/pages/Router";
 import { NavigationContainer } from "@react-navigation/native";
 import Start from "./src/pages/Start";
 import React, { useEffect, useState } from 'react';
+import { AuthProvider } from "./src/context/AuthContext";
 
 function App() {
   const [splash, setSplash] = useState(true);
@@ -13,10 +14,13 @@ function App() {
   //   }, 5000)
   // })
 
-  return(
-    <NavigationContainer>
-       {splash ? <Start setSplash={setSplash}/> : <Router/>}
-    </NavigationContainer>
+  return (
+    <AuthProvider>
+      <NavigationContainer>
+        {splash ? <Start setSplash={setSplash} /> : <Router />}
+      </NavigationContainer>
+    </AuthProvider>
+
   )
 }
 

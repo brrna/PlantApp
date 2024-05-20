@@ -3,8 +3,9 @@ import MyHeader from "../component/myHeader/MyHeader";
 import Welcome from "../component/myWelcome/Welcome";
 import MyTextinput from "../component/myTextInput/MyTextinput";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { AuthContext } from "../context/AuthContext";
 
 function Signin({ navigation }) {
     const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ function Signin({ navigation }) {
         setSecureTextEntry(prev => !prev);
     };
 
-    console.log(secureTextEntry)
+    const value= useContext(AuthContext)
     return (
 
         <KeyboardAwareScrollView enableOnAndroid={true}
@@ -38,7 +39,7 @@ function Signin({ navigation }) {
                     </View>
                 </View>
                 <TouchableOpacity style={styles.viewtext} onPress={()=> navigation.navigate("HomeTabs")}>
-                    <Text style={styles.signintext}>Sign in</Text>
+                    <Text style={styles.signintext}>{value}</Text>
                 </TouchableOpacity>
                 <View style={styles.viewrows}>
                     <Text style={styles.textaccount}>Don't have an account?</Text>
