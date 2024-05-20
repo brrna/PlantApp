@@ -3,8 +3,10 @@ import MyHeader from "../component/myHeader/MyHeader";
 import Welcome from "../component/myWelcome/Welcome";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyTextinput from "../component/myTextInput/MyTextinput";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { AuthContext } from "../context/AuthContext";
+import Spinner from "react-native-loading-spinner-overlay";
 
 function Signup({ navigation }) {
     const [email, setEmail] = useState("");
@@ -13,6 +15,8 @@ function Signup({ navigation }) {
     const [confirmpassword, setConfirmpassword] = useState("");
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+    const {register,isLoading}= useContext(AuthContext);
 
     const togglePasswordVisibility = () => {
         setSecureTextEntry(prev => !prev);
@@ -24,6 +28,7 @@ function Signup({ navigation }) {
             resetScrollToCoords={{ x: 0, y: 0 }}
             contentContainerStyle={{ flexGrow: 1 }}>
             <SafeAreaView style={styles.container}>
+                <Spinner visible={isLoading}/>
                 <MyHeader />
                 <Welcome text={"Welcome back!"} />
                 <View style={styles.textviewstyle}>
@@ -47,7 +52,7 @@ function Signup({ navigation }) {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.signuptextview}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=> register(email,nickname,password)}>
                             <Text style={styles.signuptext}> Sign up </Text>
                         </TouchableOpacity>
                         <View style={styles.viewrows}>
