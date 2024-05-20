@@ -39,7 +39,7 @@ function Signin({ navigation }) {
                     </View>
                 </View>
                 <TouchableOpacity style={styles.viewtext} onPress={()=> navigation.navigate("HomeTabs")}>
-                    <Text style={styles.signintext}>{value}</Text>
+                    <Text style={styles.signintext}>Sign in</Text>
                 </TouchableOpacity>
                 <View style={styles.viewrows}>
                     <Text style={styles.textaccount}>Don't have an account?</Text>
