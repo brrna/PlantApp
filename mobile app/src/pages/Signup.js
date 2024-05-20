@@ -11,6 +11,13 @@ function Signup({ navigation }) {
     const [password, setPassword] = useState("");
     const [nickname, setNickname] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
+
+    const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+    const togglePasswordVisibility = () => {
+        setSecureTextEntry(prev => !prev);
+    };
+
     return (
 
         <KeyboardAwareScrollView enableOnAndroid={true}
@@ -28,14 +35,14 @@ function Signup({ navigation }) {
                     <MyTextinput value={nickname} setValue={setNickname} placeholder={"Enter your nickname"} />
                     <MyTextinput value={email} setValue={setEmail} placeholder={"Enter your email"} style={{ marginTop: hp(2) }} />
                     <View style={styles.eyetextinput}>
-                        <MyTextinput value={password} setValue={setPassword} placeholder={"Enter your password"} />
-                        <TouchableOpacity>
+                        <MyTextinput value={password} setValue={setPassword} placeholder={"Enter your password"} secureTextEntry={secureTextEntry} />
+                        <TouchableOpacity onPress={togglePasswordVisibility}>
                             <Image style={styles.eyeimage} source={require("../assests/images/eye.png")} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.eyetextinput}>
-                        <MyTextinput value={confirmpassword} setValue={setConfirmpassword} placeholder={"Confirm your password"} />
-                        <TouchableOpacity>
+                        <MyTextinput value={confirmpassword} setValue={setConfirmpassword} placeholder={"Confirm your password"} secureTextEntry={secureTextEntry} />
+                        <TouchableOpacity onPress={togglePasswordVisibility}>
                             <Image style={styles.eyeimage} source={require("../assests/images/eye.png")} />
                         </TouchableOpacity>
                     </View>

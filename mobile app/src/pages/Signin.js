@@ -9,6 +9,14 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 function Signin({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+    const togglePasswordVisibility = () => {
+        setSecureTextEntry(prev => !prev);
+    };
+
+    console.log(secureTextEntry)
     return (
 
         <KeyboardAwareScrollView enableOnAndroid={true}
@@ -23,8 +31,8 @@ function Signin({ navigation }) {
                 <MyTextinput value={email} setValue={setEmail} placeholder={"Enter your nickname or email"} />
                 <View style={styles.viewrow}>
                     <View style={styles.passwordContainer}>
-                        <MyTextinput value={password} setValue={setPassword} placeholder={"Enter your password"} style={{ marginTop: hp(2.5) }} />
-                        <TouchableOpacity style={styles.eyeButton}>
+                        <MyTextinput value={password} setValue={setPassword} placeholder={"Enter your password"} style={{ marginTop: hp(2.5) }} secureTextEntry={secureTextEntry} />
+                        <TouchableOpacity style={styles.eyeButton} onPress={togglePasswordVisibility}>
                             <Image source={require("../assests/images/eye.png")} style={styles.eyeimage} />
                         </TouchableOpacity>
                     </View>
