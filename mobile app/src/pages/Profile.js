@@ -5,17 +5,24 @@ import DropShadow from "react-native-drop-shadow";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-function Profile({navigation}) {
+function Profile({ navigation }) {
 
-    const { userInfo,logout } = useContext(AuthContext);
-   
-     
+    const { userInfo, logout } = useContext(AuthContext);
+
+
     return (
         <SafeAreaView style={styles.container} >
-            <TouchableOpacity style={{padding:20,backgroundColor:"red"}} onPress={logout}></TouchableOpacity>
+            {/* <TouchableOpacity style={{padding:20,backgroundColor:"red"}} ></TouchableOpacity> */}
             <View
                 style={styles.top}>
                 <MyHeader headerText={"LeafLove"} />
+                <TouchableOpacity
+                    onPress={logout}
+                    style={styles.logoutbutton}>
+
+                    <Image source={require("../assests/images/Vector.png")} style={styles.logoutimage} />
+
+                </TouchableOpacity>
 
                 <View style={styles.imageView}>
                     <Image
@@ -86,7 +93,7 @@ function Profile({navigation}) {
                 </View>
                 <View style={styles.plants} >
                     <View style={styles.buttonView} >
-                        <Pressable 
+                        <Pressable
                             style={styles.button}
                             onPress={() => navigation.navigate('Favorites')}>
                             <View style={styles.iconView} >
@@ -103,7 +110,7 @@ function Profile({navigation}) {
                     </View>
 
                     <View style={styles.buttonView} >
-                        <Pressable 
+                        <Pressable
                             style={styles.button}
                             onPress={() => navigation.navigate('MyPlants')}>
                             <View style={styles.iconView} >
@@ -274,10 +281,21 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     buttonText: {
-        color: "rgba(0, 0, 0, 0.6)", 
-        fontWeight: "400", 
+        color: "rgba(0, 0, 0, 0.6)",
+        fontWeight: "400",
         fontSize: 16,
         marginRight: wp(29)
+    },
+    logoutbutton: {
+        position: "absolute",
+        top: hp(4.9),
+        right: wp(3)
+
+    },
+    logoutimage: {
+        width: wp(8.1),
+        height: hp(3.1)
+
     }
 })
 
