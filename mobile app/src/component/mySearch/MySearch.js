@@ -3,15 +3,14 @@ import createStyles from "./MySearchStyle";
 import DropShadow from "react-native-drop-shadow";
 import Icon from "react-native-vector-icons/Ionicons"
 import { useState } from "react";
-import MyHeader from "../myHeader/MyHeader";
 import MySecondHeader from "../myBackHeader/MySecondHeader";
 //import plants_data 
 
-function MySearch({onPress}) {
+function MySearch() {
 
     const styles = createStyles();
 
-    const [modalVisible, setModalVisible] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
     const [plants, setPlants] = useState("plants_data");
 
     /*const handleSearch = text => {
@@ -40,7 +39,7 @@ function MySearch({onPress}) {
                 }} >
 
                 <View style={styles.modalContainer} >
-                    <MySecondHeader onPress={onPress} />
+                    <MySecondHeader onPress={() => setModalVisible(false)} />
                     <View style={styles.modalView} >
                         <Text style={styles.modalText} >
                             No result found called "search for your plants"
