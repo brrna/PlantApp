@@ -59,6 +59,10 @@ export default function createStyles() {
             color: "rgba(46, 137, 132, 1)",
             fontWeight: "800",
             fontSize: 21
+        },
+        modalContainer:{
+            backgroundColor: "white",
+            flex: 1
         }
     })
 }
