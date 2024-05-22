@@ -8,14 +8,16 @@
 .middle-div {
   flex: 1; 
   display: flex;
-  justify-content: center;
+  justify-content: row;
   align-items: center; /* Ortaya hizala */
   /* İhtiyacınıza göre diğer stiller */
+  gap: 90px ;
 }
 .orta{
   height: 550px;
   width: 500px;
-  margin-right: 800px;
+  margin-left: 250px;
+  
 
 }
 
@@ -44,8 +46,68 @@
 }
 .howtext{
   margin-left: 28px;
+  font-size: 20px;
+  margin-top: -20px;
 }
 .columcont{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+.rowdiv{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 10px;
+ margin-left: 28px;
+}
+.step1div{
+  width: 200px;
+  height: 100px;
+  margin-top: 10px;
+}
+.foto{
+  width: 36px; 
+  height: 36;
+}
+.rowyapan{
+  display: flex;
+  flex-direction: row;
+}
+
+.columyap{
+  display: flex;
+  flex-direction: column;
+}
+.fantastiktext{
+  margin-left: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.textiyi{
+  font-size: 11px;
+  color: rgba(93, 105, 112, 1);
+}
+.textiyidiv{
+  margin-left: 30px;
+}
+.buttonum{
+  margin-top: 50px;
+  margin-left: -30px;
+
+}
+
+.custom-button {
+  background-color: blue;
+  color: white;
+  padding: 6px 25px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.phoneimg{
+ height:550px;
+ margin-top: 90px;
 }
