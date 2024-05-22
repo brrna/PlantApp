@@ -6,17 +6,46 @@
 }
 
 .middle-div {
-  flex: 1; /* Kalan alanı kapla */
-  background-color: red; /* Arka plan rengini ihtiyacınıza göre değiştirin */
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center; /* Ortaya hizala */
   /* İhtiyacınıza göre diğer stiller */
 }
 .orta{
-  height: 100px;
-  width: 100px;
-  background-color: aqua;
-  margin-right: 200px;
+  height: 550px;
+  width: 500px;
+  margin-right: 800px;
 
+}
+
+.yazi{
+  font-size: 30px ;
+}
+.h4size{
+  color: rgba(93, 105, 112, 1);
+  font-size: 14.5px
+  ;
+}
+.h4sizes{
+  color: rgba(93, 105, 112, 1);
+  font-size: 14.5px;
+  margin-top: -20px
+  
+  ;
+}
+.bigcontainer{
+  height: 350px;
+  width: 600px;
+  background-color: rgba(255, 255, 255, 1) ;
+  margin-left: -30px;
+  border-radius: 50px;
+  display: flex;
+}
+.howtext{
+  margin-left: 28px;
+}
+.columcont{
+  display: flex;
+  flex-direction: column;
 }

@@ -12,6 +12,8 @@ function Cameras() {
     const [takePhotoClicked, setTakePhotoClicked] = useState(true)
     const [cameraPermission, setCameraPermission] = useState(null)
 
+
+
     useEffect(() => {
         checkPermission();
     }, []);
