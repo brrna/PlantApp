@@ -63,6 +63,9 @@ export default function createStyles() {
         modalContainer:{
             backgroundColor: "white",
             flex: 1
+        },
+        modalImg: {
+            height: hp(20)
         }
     })
 }

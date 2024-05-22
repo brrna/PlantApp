@@ -25,6 +25,12 @@ function MyCard(props) {
                             onPress={() => setModalVisible(false)}>
                             <Text>X</Text>
                         </Pressable>
+                        <TouchableOpacity>
+                            <Text>favoriler butonu</Text>
+                        </TouchableOpacity>
+                        <Image 
+                            style={styles.modalImg}
+                            source={img} />
                         <Text>{description}</Text>
                     </View>
                 </Modal>
