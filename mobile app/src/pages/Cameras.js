@@ -3,6 +3,10 @@ import { ActivityIndicator, View, StyleSheet, TouchableOpacity, Text, Image } fr
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Camera, useCameraDevices, getCameraDevice } from "react-native-vision-camera";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import RNFS from 'react-native-fs';
+import axios from 'axios'
+
+import { Base_URL } from "@env"
 
 function Cameras() {
     const devices = Camera.getAvailableCameraDevices()
@@ -11,12 +15,15 @@ function Cameras() {
     const [imageData, setImageData] = useState("")
     const [takePhotoClicked, setTakePhotoClicked] = useState(true)
     const [cameraPermission, setCameraPermission] = useState(null)
+    const [imageBase64, setImageBase64] = useState("")
 
 
-
+ 
     useEffect(() => {
         checkPermission();
     }, []);
+    console.log(imageData)
+    
 
     const checkPermission = async () => {
         const newCameraPermission = await Camera.requestCameraPermission();
@@ -32,8 +39,20 @@ function Cameras() {
             const photo = await camera.current.takePhoto();
             setImageData(photo.path);
             setTakePhotoClicked(false);
+
+            const base64 = await RNFS.readFile(photo.path, 'base64');
+            setImageBase64(base64);
         }
     }
+
+    const sendImage = async () => {
+        try {
+            const response = await axios.post(`${Base_URL}/getimage`, { image_url: 'data:image/jpeg;base64,' + imageBase64 });
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error sending image: ", error);
+        }
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -64,7 +83,7 @@ function Cameras() {
                             <Image style={styles.checkimage }source={require("../assests/images/refresh.png")}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={sendImage}>
                             <Image style={styles.checkimage} source={require("../assests/images/check-mark.png")}/>
                         </TouchableOpacity>
                        
