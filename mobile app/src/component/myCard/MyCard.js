@@ -1,4 +1,4 @@
-import { Image, Text, TouchableOpacity, View, Modal, Pressable } from "react-native";
+import { Image, Text, TouchableOpacity, View, Modal, Pressable, ScrollView } from "react-native";
 import createStyles from "./MyCardStyle";
 import { useState } from "react";
 import DropShadow from "react-native-drop-shadow";
@@ -22,6 +22,41 @@ function MyCard(props) {
                         setModalVisible(!modalVisible)
                     }} >
                     <View style={styles.modalContainer} >
+                        <DropShadow style={styles.shadow} >
+                            <Image
+                                style={styles.modalImg}
+                                source={img} />
+                        </DropShadow>
+                        <View style={styles.textContainer} >
+                            <DropShadow style={styles.shadow} >
+                                <View style={styles.nameViev} >
+                                    <View style={styles.nameTextView} >
+                                        <Text style={styles.nameText} >
+                                            {name}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.leafView} >
+                                        <Image source={require("../../assests/images/leafIcon.png")} />
+                                    </View>
+                                </View>
+                            </DropShadow>
+                            <DropShadow style={styles.shadow} >
+                                <View style={styles.descriptionFrameView} >
+                                    <DropShadow style={styles.shadow} >
+                                        <View style={styles.descriptionView} >
+                                            <View style={styles.descriptionHeader} >
+                                                <Text style={styles.plantsDetail} >Plant Details</Text>
+                                            </View>
+                                            <ScrollView style={styles.descriptionTextView} >
+                                                <Text style={styles.descriptionText} >
+                                                    {description}
+                                                </Text>
+                                            </ScrollView>
+                                        </View>
+                                    </DropShadow>
+                                </View>
+                            </DropShadow>
+                        </View>
                         <Pressable
                             onPress={() => setModalVisible(false)}>
                             <Text>X</Text>
@@ -29,19 +64,6 @@ function MyCard(props) {
                         <TouchableOpacity>
                             <Text>favoriler butonu</Text>
                         </TouchableOpacity>
-                        <Image 
-                            style={styles.modalImg}
-                            source={img} />
-                        <DropShadow style={styles.shadow} >
-                            <View style={styles.nameViev} >
-                                <Text>{name}</Text>
-                            </View>
-                        </DropShadow>
-                        <DropShadow style={styles.shadow} >
-                            <View style={styles.descriptionView} >
-                                <Text>{description}</Text>
-                            </View>
-                        </DropShadow>
                     </View>
                 </Modal>
                 <TouchableOpacity

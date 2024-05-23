@@ -63,14 +63,14 @@ export default function createStyles() {
         modalContainer:{
             backgroundColor: "white",
             flex: 1,
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             alignItems: "center"
         },
         modalImg: {
-            height: hp(40),
+            height: hp(35),
             width: wp(100),
-            borderBottomRightRadius: 60,
-            borderBottomLeftRadius: 60
+            borderBottomRightRadius: 45.92,
+            borderBottomLeftRadius: 45.92
         },
         shadow: {
             shadowColor: "gray",
@@ -81,16 +81,84 @@ export default function createStyles() {
             shadowOpacity: 0.5,
             shadowRadius: 1
         },
+        textContainer: {
+            backgroundColor: "white",
+            height: hp(58),
+            width: wp(100),
+            alignItems: "center",
+            justifyContent: "space-around"
+        },
         nameViev: {
             backgroundColor: "white",
-            height: hp(8),
-            width: wp(97.5),
-            marginLeft: wp(2.5)
+            height: hp(7),
+            width: wp(94),
+            flexDirection: "row",
+            borderRadius: 14,
+            justifyContent: "flex-start",
+            alignItems: "flex-start"
+        },
+        nameTextView: {
+            backgroundColor: "white",
+            height: hp(6),
+            width: wp(35),
+            marginLeft: wp(5),
+            justifyContent: "center"
+        },
+        nameText: {
+            color: "rgba(0, 0, 0, 0.64)",
+            fontWeight: "900",
+            fontSize: 24,
+            fontStyle: "italic",
+            fontFamily: "Inter"
+        },
+        leafView: {
+            backgroundColor: "white",
+            height: hp(6),
+            width: wp(5),
+            justifyContent: "center",
+            alignItems: "center"
+        },
+        descriptionFrameView: {
+            backgroundColor: "rgba(47, 74, 45, 1)",
+            height: hp(40),
+            width: wp(80),
+            borderRadius: 3.48
         },
         descriptionView: {
             backgroundColor: "white",
             height: hp(40),
-            width: wp(95)
+            width: wp(80),
+            marginLeft: wp(5),
+            marginTop: wp(-5),
+            borderRadius: 6.09,
+            justifyContent: "center",
+            alignItems: "flex-end"
+        },
+
+        descriptionHeader: {
+            backgroundColor: "white",
+            width: wp(80),
+            height: hp(8),
+            justifyContent: "center",
+            borderRadius: 6.09
+        },
+        plantsDetail: {
+            color: "rgba(0, 0, 0, 0.51)",
+            fontWeight: "900",
+            marginLeft: wp(5),
+            fontSize: 20,
+            fontStyle: "italic"
+        },
+        descriptionTextView: {
+            backgroundColor: "white",
+            height: hp(32),
+            width: wp(75),
+            borderRadius: 6.09,
+        },
+        descriptionText: {
+            color: "rgba(0, 0, 0, 1)",
+            fontWeight: "400",
+            fontSize: 14
         }
     })
 }
