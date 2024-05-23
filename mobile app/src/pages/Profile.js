@@ -32,7 +32,7 @@ function Profile({ navigation }) {
 
                     <Text
                         style={styles.userText}>
-                        {userInfo.user.NickName}
+                       Hello {userInfo.user.NickName}
                     </Text>
                 </View>
 
@@ -73,6 +73,7 @@ function Profile({ navigation }) {
                                 <Text style={{ marginLeft: wp(6), color: "rgba(0, 0, 0, 0.56)" }}>Email</Text>
                             </View>
                             <View style={styles.inputView} >
+                                <Text style={styles.emailtext}>{userInfo.user.Email}</Text>
                             </View>
                         </View>
                     </DropShadow>
@@ -86,6 +87,7 @@ function Profile({ navigation }) {
                                 <Text style={{ marginLeft: wp(6), color: "rgba(0, 0, 0, 0.56)" }}>Nickname</Text>
                             </View>
                             <View style={styles.inputView} >
+                                <Text style={styles.nicktext}>{userInfo.user.NickName}</Text>
                             </View>
                         </View>
                     </DropShadow>
@@ -168,7 +170,7 @@ const styles = StyleSheet.create({
         color: "rgba(0, 0, 0, 0.7)",
         fontStyle: "italic",
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: hp(2.75),
     },
     textView: {
         height: hp(4),
@@ -226,7 +228,9 @@ const styles = StyleSheet.create({
     inputView: {
         backgroundColor: "white",
         height: hp(4),
-        width: wp(85)
+        width: wp(85),
+        justifyContent:"center",
+        alignItems:"center"
     },
     plants: {
         backgroundColor: "white",
@@ -295,6 +299,16 @@ const styles = StyleSheet.create({
     logoutimage: {
         width: wp(8.1),
         height: hp(3.1)
+
+    },
+    emailtext:{
+        marginRight:wp(31),
+        color:"rgba(0, 0, 0, 1)"
+
+    },
+    nicktext:{
+        marginRight:wp(50),
+        color:"rgba(0, 0, 0, 1)"
 
     }
 })

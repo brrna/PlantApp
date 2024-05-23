@@ -79,10 +79,6 @@ const Home = () => {
                                         </div>
 
                                     </div>
-                                    <div className='buttonum'>
-                                        <button className='custom-button'>About More </button>
-                                    </div>
-
 
                                 </div>
 
