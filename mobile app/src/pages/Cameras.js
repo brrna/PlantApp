@@ -5,6 +5,7 @@ import { Camera, useCameraDevices, getCameraDevice } from "react-native-vision-c
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import RNFS from 'react-native-fs';
 import axios from 'axios'
+import ImageResizer from 'react-native-image-resizer';
 
 import { Base_URL } from "@env"
 
@@ -16,14 +17,15 @@ function Cameras() {
     const [takePhotoClicked, setTakePhotoClicked] = useState(true)
     const [cameraPermission, setCameraPermission] = useState(null)
     const [imageBase64, setImageBase64] = useState("")
+    
 
 
- 
+
     useEffect(() => {
         checkPermission();
     }, []);
     console.log(imageData)
-    
+
 
     const checkPermission = async () => {
         const newCameraPermission = await Camera.requestCameraPermission();
@@ -40,7 +42,8 @@ function Cameras() {
             setImageData(photo.path);
             setTakePhotoClicked(false);
 
-            const base64 = await RNFS.readFile(photo.path, 'base64');
+            const resizedImage = await ImageResizer.createResizedImage(photo.path, 800, 600, 'JPEG', 80);
+            const base64 = await RNFS.readFile(resizedImage.uri, 'base64');
             setImageBase64(base64);
         }
     }
@@ -80,13 +83,13 @@ function Cameras() {
                             onPress={() => setTakePhotoClicked(true)}
                             style={styles.buttonyeniden}
                         >
-                            <Image style={styles.checkimage }source={require("../assests/images/refresh.png")}/>
+                            <Image style={styles.checkimage} source={require("../assests/images/refresh.png")} />
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={sendImage}>
-                            <Image style={styles.checkimage} source={require("../assests/images/check-mark.png")}/>
+                            <Image style={styles.checkimage} source={require("../assests/images/check-mark.png")} />
                         </TouchableOpacity>
-                       
+
                     </View>
 
                 </View>
@@ -122,20 +125,20 @@ const styles = StyleSheet.create({
     },
     buttonyeniden: {
         justifyContent: "center",
-        justifyContent:"center",
-        alignItems:"center",
-   
+        justifyContent: "center",
+        alignItems: "center",
+
 
     },
-    rowstyle:{
-        flexDirection:"row",
-        gap:wp(14),
-        alignItems:"center",
-        
+    rowstyle: {
+        flexDirection: "row",
+        gap: wp(14),
+        alignItems: "center",
+
     },
-    checkimage:{
-        width:wp(14),
-        height:hp(7)
+    checkimage: {
+        width: wp(14),
+        height: hp(7)
     }
 })
 
