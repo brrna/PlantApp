@@ -27,7 +27,7 @@ function Home() {
     }
 
     useEffect(() => {
-        console.log(userInfo)
+        console.log(BASE_URL)
         axios.get(`https://leaflove.com.tr/mobil/rose`,
         {
             headers: { Authorization: `Bearer ${userInfo.token}` }

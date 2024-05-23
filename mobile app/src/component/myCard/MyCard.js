@@ -1,6 +1,7 @@
 import { Image, Text, TouchableOpacity, View, Modal, Pressable } from "react-native";
 import createStyles from "./MyCardStyle";
 import { useState } from "react";
+import DropShadow from "react-native-drop-shadow";
 
 function MyCard(props) {
 
@@ -31,7 +32,16 @@ function MyCard(props) {
                         <Image 
                             style={styles.modalImg}
                             source={img} />
-                        <Text>{description}</Text>
+                        <DropShadow style={styles.shadow} >
+                            <View style={styles.nameViev} >
+                                <Text>{name}</Text>
+                            </View>
+                        </DropShadow>
+                        <DropShadow style={styles.shadow} >
+                            <View style={styles.descriptionView} >
+                                <Text>{description}</Text>
+                            </View>
+                        </DropShadow>
                     </View>
                 </Modal>
                 <TouchableOpacity

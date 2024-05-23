@@ -62,10 +62,35 @@ export default function createStyles() {
         },
         modalContainer:{
             backgroundColor: "white",
-            flex: 1
+            flex: 1,
+            justifyContent: "space-around",
+            alignItems: "center"
         },
         modalImg: {
-            height: hp(20)
+            height: hp(40),
+            width: wp(100),
+            borderBottomRightRadius: 60,
+            borderBottomLeftRadius: 60
+        },
+        shadow: {
+            shadowColor: "gray",
+            shadowOffset: {
+                width: 0,
+                height: 5,
+            },
+            shadowOpacity: 0.5,
+            shadowRadius: 1
+        },
+        nameViev: {
+            backgroundColor: "white",
+            height: hp(8),
+            width: wp(97.5),
+            marginLeft: wp(2.5)
+        },
+        descriptionView: {
+            backgroundColor: "white",
+            height: hp(40),
+            width: wp(95)
         }
     })
 }
