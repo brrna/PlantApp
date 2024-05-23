@@ -1,0 +1,46 @@
+.frame {
+    background-color: rgba(231, 231, 231, 1);
+    height: 62px;
+    width: 512px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inputFrame {
+    background-color: white;
+    height: 59px;
+    width: 372px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.input {
+    background-color: white;
+    height: 90%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3%;
+    border-radius: 8px;
+    border-color: rgba(231, 231, 231, 1);
+    border-width: 0;
+}
+
+.buttonName{
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.buttonFrame {
+    background-color: rgba(83, 190, 113, 1);
+    height: 62px;
+    width: 124px;
+    border-radius: 8px;
+    border-width: 0px;
+}
