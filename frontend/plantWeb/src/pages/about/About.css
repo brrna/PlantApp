@@ -1,0 +1,68 @@
+.endiscontainer{
+    height: 100vh;
+    background-color: rgba(231, 231, 231, 0.91);
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-divs{
+    flex: 1; 
+    display: flex;
+    justify-content: row;
+    align-self: center;
+    align-items: center; /* Ortaya hizala */
+    /* İhtiyacınıza göre diğer stiller */
+    gap: 250px;
+  }
+
+  .leftdiv{
+    width: 550;
+    height: 550;
+  }
+  .rightdiv{
+    width: 470px;
+    height: 450px;
+    background-color:rgba(63, 172, 74, 1);
+    border-radius: 9px;
+    justify-content: center;
+    align-items: center;
+  }
+  .imagefile{
+   width: 550;
+   height: 550;
+  } 
+  .rightdivin{
+    width: 450px;
+    height: 450px;
+    background-color: rgba(245, 255, 246, 1);
+    border-radius: 9px;
+    margin-left: 10px;
+    margin-top: -5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Abouttext{
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 25px;
+    align-self: start;
+  }
+  .secondtext{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .thirdtext{
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .fourthtext{
+    font-size: 15px;
+    margin-top: 7px;
+  }
+  .lasttext{
+    font-size: 15px;
+    margin-top: 7px;
+    
+  }
