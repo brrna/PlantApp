@@ -7,8 +7,12 @@ import solAlt from "../../assets/images/solAltYaprak.png"
 import sagUst from "../../assets/images/sağUstYaprak.png"
 import sagAlt from "../../assets/images/sağAltYaprak.png"
 import SearchBar from "../../component/searchBar/SearchBar";
+import Card from "../../component/card/Card";
 
 function Main() {
+
+    
+
     return (
         <div className="containers" >
             <Header />
@@ -26,7 +30,7 @@ function Main() {
                         <SearchBar />
                     </div>
                     <div className="cardsDiv" >
-
+                        <Card />
                     </div>
                 </div>
                 <div className="Rightdiv" >
