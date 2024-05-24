@@ -24,6 +24,8 @@ function Cameras() {
     const [denemeData, setDenemeData] = useState({});
     const { userInfo } = useContext(AuthContext)
 
+    const responseref=useRef("")
+
     useEffect(() => {
         checkPermission();
     }, []);
@@ -32,7 +34,6 @@ function Cameras() {
 
     useEffect(() => {
         setDenemeData(responseData)
-        console.log("demeöe", denemeData)
 
     }, [responseData]);
 
@@ -55,51 +56,60 @@ function Cameras() {
             const resizedImage = await ImageResizer.createResizedImage(photo.path, 800, 600, 'JPEG', 80);
             const base64 = await RNFS.readFile(resizedImage.uri, 'base64');
             setImageBase64(base64);
+            
         }
     }
 
-    // const sendImage = async () => {
-    //     try {
-    //         const response = await axios.post(
-    //             `${Base_URL}/mobil/plant-upload`,
-    //             { image_url: 'data:image/jpeg;base64,' + imageBase64 },
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${userInfo.token}`
-    //                 }
+    const sendImage = async () => {
+         try {
+            const response = await axios.post(
+                `${Base_URL}/mobil/plant-upload`,
+                { image_url: 'data:image/jpeg;base64,' + imageBase64 },
+                {
+                    headers: {
+                         Authorization: `Bearer ${userInfo.token}`
+                     }
+                 }
+             );
+             if (responseData?.length>0){
+                responseref.current=response.data[0]  //liste
+             }
+             else{
+                responseref.current=response.data //obje
+             }
+
+             
+             setResponseData(response.data)
+            console.log("response.data",response.data);
+             setModalVisible(true);
+         } catch (error) {
+            console.error("Error sending image: ", error);
+        }
+     };
+    
+    // const sendImage = () => {
+    //     axios.post(`${Base_URL}/mobil/plant-upload`, { image_url: 'data:image/jpeg;base64,' + imageBase64 },
+    //         {
+    //             headers: {
+    //                 Authorization: `Bearer ${userInfo.token}`
     //             }
-    //         );
-    //         setResponseData(response.data)
-    //         console.log(response.data);
-    //         setModalVisible(true);
+    //         }
+
+    //     ).then(res => {
+    //         console.log("userInfo", res.data);
+    //         setTimeout(() => {
+    //             setResponseData(res.data)
+    //         }, 500);
+            
     //         console.log("responseData", responseData)
-    //     } catch (error) {
-    //         console.error("Error sending image: ", error);
-    //     }
+    //         setModalVisible(true)
+
+
+    //     }).catch(e => {
+    //         console.log(`login error ${e}`);
+
+    //     })
     // };
-
-    const sendImage = () => {
-
-        axios.post(`${Base_URL}/mobil/plant-upload`, { image_url: 'data:image/jpeg;base64,' + imageBase64 },
-            {
-                headers: {
-                    Authorization: `Bearer ${userInfo.token}`
-                }
-            }
-
-        ).then(res => {
-            let userInfo = res.data;
-            console.log("userInfo", userInfo);
-            setResponseData(userInfo)
-            console.log("responseData", responseData)
-            setModalVisible(true)
-
-
-        }).catch(e => {
-            console.log(`login error ${e}`);
-
-        })
-    };
 
 
     return (
@@ -109,8 +119,8 @@ function Cameras() {
                     setModalVisible(!modalVisible)
                 }} 
                 style={styles.modalContainer} visible={modalVisible}>
-                {responseData?.length > 0 ? (
-                    <PlantSection Plantname={responseData[0]?.tfvname} />
+                {responseref.current ? (
+                    <PlantSection Plantname={responseref.current?.tfvname||responseref.current?.Name} /> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
                 ) : (
                     console.log("null")
                 )}
