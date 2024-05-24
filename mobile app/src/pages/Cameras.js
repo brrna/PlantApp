@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, View, StyleSheet, TouchableOpacity, Text, Image } from "react-native";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { ActivityIndicator, View, StyleSheet, TouchableOpacity, Text, Image, Modal } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Camera, useCameraDevices, getCameraDevice } from "react-native-vision-camera";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import RNFS from 'react-native-fs';
 import axios from 'axios'
 import ImageResizer from 'react-native-image-resizer';
+import { AuthContext } from "../context/AuthContext";
 
 import { Base_URL } from "@env"
+import PlantSection from "../component/plantSection/PlantSection";
 
 function Cameras() {
     const devices = Camera.getAvailableCameraDevices()
@@ -17,14 +19,22 @@ function Cameras() {
     const [takePhotoClicked, setTakePhotoClicked] = useState(true)
     const [cameraPermission, setCameraPermission] = useState(null)
     const [imageBase64, setImageBase64] = useState("")
-    
-
-
+    const [modalVisible, setModalVisible] = useState(false);
+    const [responseData, setResponseData] = useState(null);
+    const [denemeData, setDenemeData] = useState({});
+    const { userInfo } = useContext(AuthContext)
 
     useEffect(() => {
         checkPermission();
     }, []);
     console.log(imageData)
+
+
+    useEffect(() => {
+        setDenemeData(responseData)
+        console.log("demeöe", denemeData)
+
+    }, [responseData]);
 
 
     const checkPermission = async () => {
@@ -48,17 +58,59 @@ function Cameras() {
         }
     }
 
-    const sendImage = async () => {
-        try {
-            const response = await axios.post(`${Base_URL}/getimage`, { image_url: 'data:image/jpeg;base64,' + imageBase64 });
-            console.log(response.data);
-        } catch (error) {
-            console.error("Error sending image: ", error);
-        }
+    // const sendImage = async () => {
+    //     try {
+    //         const response = await axios.post(
+    //             `${Base_URL}/mobil/plant-upload`,
+    //             { image_url: 'data:image/jpeg;base64,' + imageBase64 },
+    //             {
+    //                 headers: {
+    //                     Authorization: `Bearer ${userInfo.token}`
+    //                 }
+    //             }
+    //         );
+    //         setResponseData(response.data)
+    //         console.log(response.data);
+    //         setModalVisible(true);
+    //         console.log("responseData", responseData)
+    //     } catch (error) {
+    //         console.error("Error sending image: ", error);
+    //     }
+    // };
+
+    const sendImage = () => {
+
+        axios.post(`${Base_URL}/mobil/plant-upload`, { image_url: 'data:image/jpeg;base64,' + imageBase64 },
+            {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            }
+
+        ).then(res => {
+            let userInfo = res.data;
+            console.log("userInfo", userInfo);
+            setModalVisible(true)
+            setResponseData(userInfo)
+            console.log("responseData", responseData)
+
+
+        }).catch(e => {
+            console.log(`login error ${e}`);
+
+        })
     };
+
 
     return (
         <SafeAreaView style={styles.container}>
+            <Modal style={styles.modalContainer} visible={modalVisible}>
+                {responseData !== null ? (
+                   <PlantSection Plantname={responseData[0].tfvname} climate={responseData[0].climate}/>
+                ): (
+                        console.log("null")
+                    )}
+            </Modal>
             {takePhotoClicked ? (
                 <View style={{ flex: 1 }}>
                     <Camera
@@ -139,6 +191,9 @@ const styles = StyleSheet.create({
     checkimage: {
         width: wp(14),
         height: hp(7)
+    },
+    modalContainer: {
+        flex: 1,
     }
 })
 
