@@ -18,7 +18,9 @@ function Home() {
             <MyCard
                 img={{ uri: item.Image }}
                 name={item.Name}
-                description={item.Description} />
+                description={item.Description}
+                plantsId={item.Id}
+                roseId={item.Id} />
         )
     }
 
