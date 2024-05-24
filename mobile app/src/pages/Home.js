@@ -19,8 +19,7 @@ function Home() {
                 img={{ uri: item.Image }}
                 name={item.Name}
                 description={item.Description}
-                plantsId={item.Id}
-                roseId={item.Id} />
+                id={item.Id} />
         )
     }
 
