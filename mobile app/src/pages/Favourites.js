@@ -1,11 +1,45 @@
-import { SafeAreaView, View, StyleSheet} from "react-native";
+import { SafeAreaView, View, StyleSheet, FlatList} from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MySecondHeader from "../component/myBackHeader/MySecondHeader";
 import MySearch from "../component/mySearch/MySearch";
 import WhiteButton from "../component/whiteButton/WhiteButton";
+import { useContext, useEffect, useState } from "react";
 import MiniCard from "../component/myMiniCard/MiniCard";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 function Favorites({ navigation }) {
+
+    const [data, setData] = useState([]);
+
+    const {userInfo} = useContext(AuthContext);
+
+    const renderFavorites = ({item}) => {
+        return(
+            <MiniCard
+                plantImage={{uri: item.Image}} />
+        )
+    }
+
+    const keyFavorites = (item) => {
+        return item.id ? item.id.toString() : Math.random().toString();
+    }
+
+    useEffect(() => {
+        console.log(`https://leaflove.com.tr/mobil/favorites`)
+        axios.get(`https://leaflove.com.tr/mobil/favorites`,
+        {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+        }
+        )
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                console.error("API isteği sırasında bir hata oluştu:", error);
+            });
+    }, [])
+
     return (
         <SafeAreaView style={styles.container}>
 
@@ -27,7 +61,10 @@ function Favorites({ navigation }) {
             </View>
 
             <View style={styles.cardView} >
-            
+                <FlatList
+                    data={data}
+                    renderItem={renderFavorites}
+                    keyExtractor={keyFavorites} />
             </View>
 
         </SafeAreaView>

@@ -2,9 +2,11 @@ import { Image, Text, View } from "react-native";
 import createStyles from "./MiniCardStyle";
 import DropShadow from "react-native-drop-shadow";
 
-function MiniCard({plantName, plantImage, starIcon}) {
+function MiniCard(props) {
 
     const styles = createStyles();
+
+    const {plantName, plantImage = [""], starIcon} = props;
 
     return (
         <View style={styles.container} >

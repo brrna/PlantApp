@@ -127,7 +127,7 @@ export default function createStyles() {
         nameTextView: {
             backgroundColor: "white",
             height: hp(6),
-            width: wp(35),
+            width: wp(38),
             marginLeft: wp(5),
             justifyContent: "center"
         },
@@ -186,7 +186,7 @@ export default function createStyles() {
         descriptionText: {
             color: "rgba(0, 0, 0, 1)",
             fontWeight: "400",
-            fontSize: 14
+            fontSize: 16
         }
     })
 }

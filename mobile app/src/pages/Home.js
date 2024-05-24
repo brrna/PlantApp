@@ -27,19 +27,27 @@ function Home() {
     }
 
     useEffect(() => {
-        console.log(BASE_URL)
-        axios.get(`https://leaflove.com.tr/mobil/rose`,
-        {
+        const fetchRoses = axios.get(`https://leaflove.com.tr/mobil/general-plants`, {
             headers: { Authorization: `Bearer ${userInfo.token}` }
-        }
-        )
-            .then((response) => {
-                setData(response.data);
+        });
+
+        const fetchGeneralPlants = axios.get(`https://leaflove.com.tr/mobil/rose`, {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+        });
+
+        Promise.all([fetchRoses, fetchGeneralPlants])
+            .then(([rosesResponse, generalPlantsResponse]) => {
+                const combinedData = [
+                    ...rosesResponse.data,
+                    ...generalPlantsResponse.data
+                ];
+                setData(combinedData);
             })
             .catch((error) => {
                 console.error("API isteği sırasında bir hata oluştu:", error);
             });
-    }, [])
+    }, []);
+
 
     return (
         <SafeAreaView style={styles.container} >
