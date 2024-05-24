@@ -1,17 +1,30 @@
-import { Image, Text, View } from "react-native";
+import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 import createStyles from "./PlantsCardStyle";
 import DropShadow from "react-native-drop-shadow";
+import { useState } from "react";
+import PlantSection from "../plantSection/PlantSection";
 
 function PlantsCard(props) {
 
     const styles = createStyles();
 
-    const {plantName, plantImage = [""], starIcon} = props;
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const {plantName, plantImage = [""]} = props;
 
     return (
         <View style={styles.container} >
             <DropShadow style={styles.shadow} >
-                <View style={styles.card} >
+                <Modal
+                    style={{flex: 1}}
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}>
+                        <PlantSection />
+                </Modal>
+                <TouchableOpacity 
+                    onPress={()=>setModalVisible(true)}
+                    style={styles.card} >
                     <View style={styles.imageView} >
                         <Image 
                             source={plantImage}
@@ -24,9 +37,9 @@ function PlantsCard(props) {
                     </View>
                     <View style={styles.iconView} >
                         <Image 
-                            source={starIcon}/>
+                            source={require("../../assests/images/outlineStar.png")}/>
                     </View>
-                </View>
+                </TouchableOpacity>
             </DropShadow>
         </View>
     )
