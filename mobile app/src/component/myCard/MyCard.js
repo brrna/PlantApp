@@ -9,17 +9,26 @@ function MyCard(props) {
 
     const styles = createStyles();
 
-    const { img = [""], name, description, plantsId=[], roseId=[] } = props;
+    const { img = [""], name, description, id} = props;
 
     const {userInfo} = useContext(AuthContext)
 
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleFavori = () => {
+        let roseId = null;
+        let plantsId = null;
+
+        if (name && name.toLowerCase().includes("rose")) {
+            roseId = id;
+        } else {
+            plantsId = id;
+        }
+
         axios.post(`https://leaflove.com.tr/mobil/add-favorite`,
         {
-                general_plants_id: plantsId,
-                rose_id: roseId
+            general_plants_id: plantsId,
+            rose_id: roseId
         },
         {
             headers: { Authorization: `Bearer ${userInfo.token}`}

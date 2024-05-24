@@ -1,38 +1,15 @@
 import { Image, Modal, Text, TouchableOpacity, View, ScrollView } from "react-native";
 import createStyles from "./MiniCardStyle";
 import DropShadow from "react-native-drop-shadow";
-import { useContext, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
 
 function MiniCard(props) {
 
     const styles = createStyles();
 
-    const {userInfo} = useContext(AuthContext)
-
     const {plantName, plantImage = [""], description} = props;
 
     const [modalVisible, setModalVisible] = useState(false);
-
-    const handleFavori = () => {
-            axios.post(`https://leaflove.com.tr/mobil/add-favorite`,
-            {
-                    "general_plants_id": 0,
-                    "rose_id": 0
-            },
-            {
-                headers: { Authorization: `Bearer ${userInfo.token}`}
-            }
-            )
-            .then(response => {
-                console.log('Favorilere eklendi', response.data)
-            } )
-            .catch(error => {
-                console.log("favorilere eklenme hatası", error)
-            })
-        }
-    
 
     return (
         <View style={styles.container} >
@@ -57,11 +34,10 @@ function MiniCard(props) {
                                     onPress={() => setModalVisible(false)} >
                                     <Image source={require("../../assests/images/back.png")} />
                                 </TouchableOpacity>
-                                <TouchableOpacity 
-                                    style={styles.buttonView} 
-                                    onPress={handleFavori} >
-                                    <Image source={require("../../assests/images/outlineStar.png")} />
-                                </TouchableOpacity>
+                                <View 
+                                    style={styles.buttonView} >
+                                    <Image source={require("../../assests/images/fillStar.png")} />
+                                </View>
                             </View>
                         </View>
                         <View style={styles.textContainer} >
