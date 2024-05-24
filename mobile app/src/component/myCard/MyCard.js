@@ -22,11 +22,23 @@ function MyCard(props) {
                         setModalVisible(!modalVisible)
                     }} >
                     <View style={styles.modalContainer} >
-                        <DropShadow style={styles.shadow} >
-                            <Image
-                                style={styles.modalImg}
-                                source={img} />
-                        </DropShadow>
+                        <View style={styles.modalTop} >
+                            <DropShadow style={styles.shadow} >
+                                <Image
+                                    style={styles.modalImg}
+                                    source={img} />
+                            </DropShadow>
+                            <View style={styles.transparent} >
+                                <TouchableOpacity 
+                                    style={styles.buttonView}
+                                    onPress={() => setModalVisible(false)} >
+                                    <Image source={require("../../assests/images/back.png")} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.buttonView} >
+                                    <Image source={require("../../assests/images/outlineStar.png")} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
                         <View style={styles.textContainer} >
                             <DropShadow style={styles.shadow} >
                                 <View style={styles.nameViev} >
@@ -57,13 +69,6 @@ function MyCard(props) {
                                 </View>
                             </DropShadow>
                         </View>
-                        <Pressable
-                            onPress={() => setModalVisible(false)}>
-                            <Text>X</Text>
-                        </Pressable>
-                        <TouchableOpacity>
-                            <Text>favoriler butonu</Text>
-                        </TouchableOpacity>
                     </View>
                 </Modal>
                 <TouchableOpacity

@@ -66,6 +66,32 @@ export default function createStyles() {
             justifyContent: "space-between",
             alignItems: "center"
         },
+        modalTop: {
+            backgroundColor: "white",
+            height: hp(35),
+            width: wp(100)
+        },
+        transparent: {
+            backgroundColor: "rgba(0, 0, 0, 0)",
+            height: hp(8),
+            width: wp(100),
+            position: "absolute",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: wp(1)
+        },
+        buttonView: {
+            backgroundColor: "rgba(0, 0, 0, 0)",
+            height: hp(6),
+            width: wp(12),
+            justifyContent: "center",
+            alignItems: "center"
+        },
+        button:{
+            justifyContent: "center",
+            alignItems: "center"
+        },
         modalImg: {
             height: hp(35),
             width: wp(100),
@@ -86,7 +112,8 @@ export default function createStyles() {
             height: hp(58),
             width: wp(100),
             alignItems: "center",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
+            marginBottom: hp(2)
         },
         nameViev: {
             backgroundColor: "white",
@@ -122,7 +149,8 @@ export default function createStyles() {
             backgroundColor: "rgba(47, 74, 45, 1)",
             height: hp(40),
             width: wp(80),
-            borderRadius: 3.48
+            borderRadius: 3.48,
+            marginBottom: hp(3)
         },
         descriptionView: {
             backgroundColor: "white",
