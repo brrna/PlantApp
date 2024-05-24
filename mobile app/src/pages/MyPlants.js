@@ -3,7 +3,6 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import MySecondHeader from "../component/myBackHeader/MySecondHeader";
 import MySearch from "../component/mySearch/MySearch";
 import WhiteButton from "../component/whiteButton/WhiteButton";
-import PlantsCard from "../component/myPlantsCard/PlantsCard";
 
 
 function MyPlants({ navigation }) {
@@ -26,7 +25,6 @@ function MyPlants({ navigation }) {
 
             </View>
             <View style={styles.cardView} >
-                
             </View>
 
         </SafeAreaView>

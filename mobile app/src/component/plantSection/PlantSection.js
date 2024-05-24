@@ -1,9 +1,9 @@
-import { FlatList, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 import createStyles from "./PlantSectionStyle";
 import DropShadow from "react-native-drop-shadow";
 import GreenCard from "../greenCard/GreenCard";
 
-function PlantSection({Plantname}) {
+function PlantSection({ Plantname }) {
 
     const styles = createStyles();
 
@@ -22,28 +22,12 @@ function PlantSection({Plantname}) {
                 <View style={styles.headerView} >
                     <DropShadow style={styles.shadow} >
                         <View style={styles.header} >
-                            <View style={styles.info} >
-                                <View style={styles.top} >
-                                    <Text style={styles.topText} >    Plant name</Text>
-                                    <Image
-                                        source={require("../../assests/images/leafIcon.png")}
-                                        style={styles.icon} />
-                                </View>
-                                <View style={styles.under} >
-                                    <Text style={styles.underText} >{Plantname}</Text>
-                                </View>
+                            <View style={styles.top} >
+                                <Text style={styles.topText} >PlantName</Text>
+                                <Image style={styles.icon} source={require("../../assests/images/leafIcon.png")} />
                             </View>
-
-                            <View style={styles.line}></View>
-
-                            <View style={styles.info} >
-                                <View style={styles.top} >
-                                    <Text style={styles.topText} >   Season</Text>
-                                    <Image source={require("../../assests/images/season.png")} />
-                                </View>
-                                <View style={styles.under} >
-                                    <Text style={styles.underText} >Summer</Text>
-                                </View>
+                            <View style={styles.under} >
+                                <Text style={styles.underText} >Aloe Vera</Text>
                             </View>
                         </View>
                     </DropShadow>

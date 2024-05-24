@@ -26,7 +26,7 @@ export default function createStyles(){
             width: wp(100)
         },
         headerView:{
-            backgroundColor: "white",
+            backgroundColor: "red",
             width: wp(100),
             height: hp(14),
             justifyContent: "center",
@@ -36,43 +36,38 @@ export default function createStyles(){
             backgroundColor: "white",
             height: hp(10),
             width: wp(70),
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center"
-        },
-        info: {
-            backgroundColor: "white",
-            height: hp(10),
-            width: wp(35)
+            flexDirection: "column",
+            justifyContent: "center"
+            
         },
         top:{
             backgroundColor: "white",
-            width: wp(35),
-            height: hp(4),
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-evenly"
+            width: wp(70)
         },
         topText: {
             fontStyle: "italic",
             color: " rgba(0, 0, 0, 0.7)",
             fontWeight: "400",
-            fontSize: 15
+            fontSize: 15,
+            marginLeft: wp(3),
+            marginTop: wp(3)
         },
         icon:{
-            marginRight: wp(5)
+            marginTop: wp(2),
+            marginLeft: wp(1)
         },
         under: {
             backgroundColor: "white",
             height: hp(6),
-            width: wp(35),
             justifyContent: "center",
-            alignItems: "center"
         },
         underText: {
             color: "rgba(0, 0, 0, 1)",
             fontWeight: "400",
             fontSize: 15,
+            marginLeft: wp(3)
         },
         line: {
             height:hp(8),

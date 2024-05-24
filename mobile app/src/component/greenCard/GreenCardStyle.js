@@ -6,7 +6,7 @@ export default function createStyles() {
         container:{
             backgroundColor: "white",
             width: wp(100),
-            height: hp(17),
+            height: hp(30),
             justifyContent: "center",
             alignItems: "center"
         },
@@ -22,7 +22,7 @@ export default function createStyles() {
         frame: {
             backgroundColor: "rgba(233, 245, 234, 1)",
             width: wp(86),
-            height: hp(13),
+            height: hp(25),
             borderRadius: 15
         },
         headerView:{
@@ -37,6 +37,16 @@ export default function createStyles() {
             fontWeight: "400",
             fontSize: 15,
             marginLeft: wp(5)
+        },
+        descriptionView: {
+            height: hp(20),
+            width: wp(85),
+            borderRadius: 15,
+            alignItems: "center"
+        },
+        descriptionText: {
+            color: "black",
+            fontSize: 14
         }
     })
 }

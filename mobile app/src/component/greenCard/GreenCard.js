@@ -13,6 +13,9 @@ function GreenCard({header}) {
                     <View style={styles.headerView} >
                         <Text style={styles.headerText} >{header}</Text>
                     </View>
+                    <View style={styles.descriptionView} >
+                        <Text style={styles.descriptionText} >fnkjnclnelmodsölcmlfsnd ljnmdaclmwdıcmlkmqlsmkcqjemwıonalnclmzŞOMKXAŞSMCADLCMAMŞKŞXşkddcnjsdjnkwfgbqıyedhouahcnwkhbfqeıgdbakdbc khwbqaıyshxbqwkdbwkd</Text>
+                    </View>
                 </View>
             </DropShadow>
         </View>
