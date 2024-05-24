@@ -90,9 +90,9 @@ function Cameras() {
         ).then(res => {
             let userInfo = res.data;
             console.log("userInfo", userInfo);
-            setModalVisible(true)
             setResponseData(userInfo)
             console.log("responseData", responseData)
+            setModalVisible(true)
 
 
         }).catch(e => {
@@ -104,12 +104,16 @@ function Cameras() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Modal style={styles.modalContainer} visible={modalVisible}>
-                {responseData !== null ? (
-                   <PlantSection Plantname={responseData[0].tfvname} climate={responseData[0].climate}/>
-                ): (
-                        console.log("null")
-                    )}
+            <Modal
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible)
+                }} 
+                style={styles.modalContainer} visible={modalVisible}>
+                {responseData?.length > 0 ? (
+                    <PlantSection Plantname={responseData[0]?.tfvname} />
+                ) : (
+                    console.log("null")
+                )}
             </Modal>
             {takePhotoClicked ? (
                 <View style={{ flex: 1 }}>

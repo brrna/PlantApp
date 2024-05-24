@@ -1,15 +1,14 @@
-import { FlatList, Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { FlatList, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import createStyles from "./PlantSectionStyle";
 import DropShadow from "react-native-drop-shadow";
 import GreenCard from "../greenCard/GreenCard";
 
-function PlantSection() {
+function PlantSection({Plantname}) {
 
     const styles = createStyles();
 
     return (
         <SafeAreaView style={styles.container} >
-
             <ScrollView >
 
                 <View style={styles.imageView} >
@@ -31,7 +30,7 @@ function PlantSection() {
                                         style={styles.icon} />
                                 </View>
                                 <View style={styles.under} >
-                                    <Text style={styles.underText} >Aloe Vera</Text>
+                                    <Text style={styles.underText} >{Plantname}</Text>
                                 </View>
                             </View>
 
