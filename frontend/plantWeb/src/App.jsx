@@ -4,6 +4,7 @@ import Footer from  "../src/component/footer/Footer.jsx"
 import Home from './pages/Home.jsx'
 import Main from './pages/main/Main.jsx'
 import About from './pages/about/About.jsx'
+import Signin from './pages/Signin/Signin.jsx'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
          <Home/>
         <About/>
         <Main />
+        <Signin/>
     </>
   )
 }
