@@ -17,7 +17,9 @@ function Favorites({ navigation }) {
     const renderFavorites = ({item}) => {
         return(
             <MiniCard
-                plantImage={{uri: item.Image}} />
+                plantImage={{uri: item.Image}}
+                plantName={item.Name}
+                description={item.Description} />
         )
     }
 
@@ -26,10 +28,11 @@ function Favorites({ navigation }) {
     }
 
     useEffect(() => {
-        console.log(`https://leaflove.com.tr/mobil/favorites`)
+        console.log(data)
         axios.get(`https://leaflove.com.tr/mobil/favorites`,
         {
-            headers: { Authorization: `Bearer ${userInfo.token}` }
+            headers: { Authorization: `Bearer ${userInfo.token}`},
+            params: { user_id: userInfo.user.Id }
         }
         )
             .then((response) => {

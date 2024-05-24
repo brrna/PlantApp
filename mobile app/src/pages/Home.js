@@ -16,7 +16,7 @@ function Home() {
     const renderRoses = ({ item }) => {
         return (
             <MyCard
-                img={{uri : item.Image}}
+                img={{ uri: item.Image }}
                 name={item.Name}
                 description={item.Description} />
         )
@@ -27,11 +27,13 @@ function Home() {
     }
 
     useEffect(() => {
-        const fetchRoses = axios.get(`https://leaflove.com.tr/mobil/general-plants`, {
+        const fetchRoses = axios.get(`https://leaflove.com.tr/mobil/general-plants`, 
+        {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         });
 
-        const fetchGeneralPlants = axios.get(`https://leaflove.com.tr/mobil/rose`, {
+        const fetchGeneralPlants = axios.get(`https://leaflove.com.tr/mobil/rose`, 
+        {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         });
 
