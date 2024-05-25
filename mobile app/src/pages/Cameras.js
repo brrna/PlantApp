@@ -130,7 +130,9 @@ function Cameras() {
                      Soil={responseref.current.Soil}/> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
 
                 ) : (
-                    console.log("null")
+                    <View>
+                       <Text>Sonuç yok</Text> 
+                    </View>
                 )}
             </Modal>
             {takePhotoClicked ? (
