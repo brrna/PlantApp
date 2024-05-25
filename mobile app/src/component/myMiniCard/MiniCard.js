@@ -1,7 +1,9 @@
 import { Image, Modal, Text, TouchableOpacity, View, ScrollView } from "react-native";
 import createStyles from "./MiniCardStyle";
 import DropShadow from "react-native-drop-shadow";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 function MiniCard(props) {
 
@@ -10,6 +12,27 @@ function MiniCard(props) {
     const {plantName, plantImage = [""], description} = props;
 
     const [modalVisible, setModalVisible] = useState(false);
+
+    const {userInfo} = useContext(AuthContext);
+
+    const removeFavori = () => {
+        return(
+            axios.post(`https://leaflove.com.tr/mobil/delete-favorite`,
+                {
+                    plant_name: plantName
+                },
+                {
+                    headers: { Authorization: `Bearer ${userInfo.token}`}
+                }
+            )
+            .then(response => {
+                console.log("favrorilerden çıkarıldı", response.data)
+            })
+            .catch(error => {
+                console.log("hata", error)
+            })
+        )
+    }
 
     return (
         <View style={styles.container} >
@@ -34,10 +57,11 @@ function MiniCard(props) {
                                     onPress={() => setModalVisible(false)} >
                                     <Image source={require("../../assests/images/back.png")} />
                                 </TouchableOpacity>
-                                <View 
-                                    style={styles.buttonView} >
+                                <TouchableOpacity 
+                                    style={styles.buttonView}
+                                    onPress={removeFavori} >
                                     <Image source={require("../../assests/images/fillStar.png")} />
-                                </View>
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={styles.textContainer} >
