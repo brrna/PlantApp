@@ -41,12 +41,12 @@ function PlantsCard(props) {
         axios.get(`https://leaflove.com.tr/mobil/plant-detail`,
         {
             headers: { Authorization: `Bearer ${userInfo.token}`},
-            params: { plant_user_id: Item.PlantUserId }
+            params: { plant_user_id: Item.PlantUserId }  //pnatUserİd yi props olarak aldık
         }
         )
             .then((response) => {
                 console.log("plantdetaildata",response.data)
-                responseref.current=response.data
+                responseref.current=response.data  //ref ekledik usesteye koyamadığından ref ekledik
                 console.log("detailsetdatsı",responseref)
                 setModalVisible(true) 
                
@@ -92,7 +92,7 @@ function PlantsCard(props) {
                     </View>
                     <View style={styles.textView} >
                         <Text style={styles.text} >
-                            {plantName}
+                            {Item.Name}
                         </Text> 
                     </View>
                     <View style={styles.iconView} >

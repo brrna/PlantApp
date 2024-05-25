@@ -18,7 +18,7 @@ function Favorites(props) {
 
     const {userInfo} = useContext(AuthContext);
 
-    useFocusEffect(                         //usefeectimiz sağlıklı tetiklenmiyorsa sayfa her açıldığında tetiklenir burada favorileri anında tetiklemek için kullandık
+    useFocusEffect(      //usefeectimiz sağlıklı tetiklenmiyorsa sayfa her açıldığında tetiklenir burada favorileri anında tetiklemek için kullandık
         React.useCallback(() => {
             getFavorites();
             console.log("usefocucefetcet")  
@@ -33,8 +33,8 @@ function Favorites(props) {
                 plantImage={{uri: item.Image}}
                 plantName={item.Name}
                 description={item.Description} 
-                onDelete={()=>{getFavorites()  /// hemen gitmesi için eklendi
-
+                onDelete={()=>{getFavorites()  /// hemen gitmesi için eklendi props olarak yolladık fonksiyonu getfavoritesi çağırarak güncelleniş olduk
+                
                 }}/>
         )
     }

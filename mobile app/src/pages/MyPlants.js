@@ -38,9 +38,9 @@ function MyPlants({ navigation }) {
             <PlantsCard
                 plantImage={{uri: item.Image}}
                 plantName={item.Name}
-                plantUserId={item.PlantUserId}
-                Item={item}
-            />
+                plantUserId={item.PlantUserId}  //plant userid yi burada yolladık
+                Item={item}  // üssttekileri yollamak yerine direkt itemi yollayarak "item.bir şey" olarak çağırabiliriz
+             /> 
         )
     }
 
