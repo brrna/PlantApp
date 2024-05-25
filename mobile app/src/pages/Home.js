@@ -4,12 +4,12 @@ import MyCard from "../component/myCard/MyCard";
 import MySearch from "../component/mySearch/MySearch";
 import MyHeader from "../component/myHeader/MyHeader";
 import axios from "axios";
-import { BASE_URL } from "@env"
 import { AuthContext } from "../context/AuthContext";
 
 function Home() {
 
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([])
 
     const { userInfo } = useContext(AuthContext);
 
@@ -45,22 +45,30 @@ function Home() {
                     ...generalPlantsResponse.data
                 ];
                 setData(combinedData);
+                setFilteredData(combinedData);
             })
             .catch((error) => {
                 console.error("API isteği sırasında bir hata oluştu:", error);
             });
     }, []);
 
+    const handleSearch = (searchText) => {
+        const lowerCaseSearchText = searchText.toLowerCase();
+        const filteredList = data.filter(item => 
+            item.Name.toLowerCase().includes(lowerCaseSearchText)
+        );
+        setFilteredData(filteredList)
+    };
 
     return (
         <SafeAreaView style={styles.container} >
 
             <MyHeader headerText={"LeafLove"} />
 
-            <MySearch />
+            <MySearch onSearch={handleSearch} />
 
             <FlatList
-                data={data}
+                data={filteredData}
                 renderItem={renderRoses}
                 keyExtractor={keyRoses}
             />

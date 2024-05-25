@@ -4,28 +4,14 @@ import DropShadow from "react-native-drop-shadow";
 import Icon from "react-native-vector-icons/Ionicons"
 import { useState } from "react";
 import MySecondHeader from "../myBackHeader/MySecondHeader";
-//import plants_data 
 
-function MySearch() {
+function MySearch(props) {
 
     const styles = createStyles();
+    
+    const {onSearch} = props;
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [plants, setPlants] = useState("plants_data");
-
-    /*const handleSearch = text => {
-
-        setPlants(text);
-
-        const filteredList = plants_data.filter( plant => {
-            const searchedText = text.toLowerCase();
-            const currentTitle = plant.title.toLowerCase();
-
-            return currentTitle.indexOf(searchedText) > -1;
-        });
-        setPlants(filteredList);
-        setModalVisible(filteredList.length === 0);
-    };*/
 
     return (
         <View style={styles.container} >
@@ -59,9 +45,7 @@ function MySearch() {
 
                     <TextInput
                         style={styles.input}
-                        onChangeText={setPlants}
-                        value={plants}
-                        placeholder="Ara..." />
+                        onChangeText={onSearch} />
                 </View>
 
             </DropShadow>
