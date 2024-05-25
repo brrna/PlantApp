@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         color: "rgba(0, 0, 0, 0.7)",
         fontStyle: "italic",
         fontWeight: "bold",
-        fontSize: hp(2.75),
+        fontSize: hp(2.1),
     },
     textView: {
         height: hp(4),
@@ -308,7 +308,8 @@ const styles = StyleSheet.create({
     },
     nicktext:{
         marginRight:wp(50),
-        color:"rgba(0, 0, 0, 1)"
+        color:"rgba(0, 0, 0, 1)",
+        
 
     }
 })

@@ -120,7 +120,14 @@ function Cameras() {
                 }} 
                 style={styles.modalContainer} visible={modalVisible}>
                 {responseref.current ? (
-                    <PlantSection Plantname={responseref.current?.tfvname||responseref.current?.Name} /> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
+                    <PlantSection 
+                    Plantname={responseref.current?.tfvname||responseref.current?.Name}
+                     Description={responseref.current.Description} 
+                     Uses={responseref.current.Uses}
+                     Health={responseref.current.Health}
+                     Climate={responseref.current.Climate}
+                     Soil={responseref.current.Soil}/> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
+
                 ) : (
                     console.log("null")
                 )}

@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import createStyles from "./GreenCardStyle";
 import DropShadow from "react-native-drop-shadow";
 
-function GreenCard({header}) {
+function GreenCard({header,Uses}) {
 
     const styles = createStyles();
 
@@ -14,7 +14,7 @@ function GreenCard({header}) {
                         <Text style={styles.headerText} >{header}</Text>
                     </View>
                     <View style={styles.descriptionView} >
-                        <Text style={styles.descriptionText} >fnkjnclnelmodsölcmlfsnd ljnmdaclmwdıcmlkmqlsmkcqjemwıonalnclmzŞOMKXAŞSMCADLCMAMŞKŞXşkddcnjsdjnkwfgbqıyedhouahcnwkhbfqeıgdbakdbc khwbqaıyshxbqwkdbwkd</Text>
+                        <Text style={styles.descriptionText} >{Uses}</Text>
                     </View>
                 </View>
             </DropShadow>

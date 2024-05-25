@@ -6,9 +6,10 @@ export default function createStyles() {
         container:{
             backgroundColor: "white",
             width: wp(100),
-            height: hp(30),
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            marginTop:hp(5)
+
         },
         shadow: {
             shadowColor: "gray",
@@ -22,8 +23,8 @@ export default function createStyles() {
         frame: {
             backgroundColor: "rgba(233, 245, 234, 1)",
             width: wp(86),
-            height: hp(25),
-            borderRadius: 15
+           
+            borderRadius: 15,
         },
         headerView:{
             backgroundColor: "rgba(233, 245, 234, 1)",
@@ -34,19 +35,21 @@ export default function createStyles() {
         },
         headerText: {
             color: "rgba(0, 0, 0, 1)",
-            fontWeight: "400",
+            fontWeight: "bold",
             fontSize: 15,
-            marginLeft: wp(5)
+            marginLeft: wp(5),
+            
         },
         descriptionView: {
-            height: hp(20),
+          
             width: wp(85),
             borderRadius: 15,
-            alignItems: "center"
+            alignItems: "center",
+            paddingLeft:wp(1)
         },
         descriptionText: {
             color: "black",
-            fontSize: 14
+            fontSize: 14,
         }
     })
 }

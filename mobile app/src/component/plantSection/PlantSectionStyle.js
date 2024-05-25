@@ -26,7 +26,7 @@ export default function createStyles(){
             width: wp(100)
         },
         headerView:{
-            backgroundColor: "red",
+            backgroundColor: "rgba(255, 255, 255, 1)",
             width: wp(100),
             height: hp(14),
             justifyContent: "center",
@@ -126,7 +126,7 @@ export default function createStyles(){
         cardsView:{
             backgroundColor: "white",
             width: wp(100),
-            height: hp(95)
+            height: ("%100")
         }
     })
 }

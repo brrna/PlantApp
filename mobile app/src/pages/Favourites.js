@@ -14,6 +14,10 @@ function Favorites({ navigation }) {
 
     const {userInfo} = useContext(AuthContext);
 
+    useEffect(()=>{
+        console.log("data güncellendei",data)
+    },[data])
+
     const renderFavorites = ({item}) => {
         return(
             <MiniCard

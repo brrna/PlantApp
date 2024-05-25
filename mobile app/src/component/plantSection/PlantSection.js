@@ -3,13 +3,13 @@ import createStyles from "./PlantSectionStyle";
 import DropShadow from "react-native-drop-shadow";
 import GreenCard from "../greenCard/GreenCard";
 
-function PlantSection({ Plantname }) {
+function PlantSection({ Plantname,Description,Uses,Health,Climate,Soil }) {
 
     const styles = createStyles();
 
     return (
         <SafeAreaView style={styles.container} >
-            <ScrollView >
+            <ScrollView  style={{height:("100%"),flex:1}} >
 
                 <View style={styles.imageView} >
                     <DropShadow style={styles.shadow} >
@@ -27,7 +27,7 @@ function PlantSection({ Plantname }) {
                                 <Image style={styles.icon} source={require("../../assests/images/leafIcon.png")} />
                             </View>
                             <View style={styles.under} >
-                                <Text style={styles.underText} >Aloe Vera</Text>
+                                <Text style={styles.underText} >{Plantname}</Text>
                             </View>
                         </View>
                     </DropShadow>
@@ -45,7 +45,7 @@ function PlantSection({ Plantname }) {
                                     </View>
                                     <View style={styles.detailView} >
                                         <Text style={styles.detailText} >
-                                            detail detail detail
+                                            {Description}
                                         </Text>
                                     </View>
                                 </View>
@@ -55,11 +55,10 @@ function PlantSection({ Plantname }) {
                 </View>
 
                 <View style={styles.cardsView} >
-                    <GreenCard header={"Uses"} />
-                    <GreenCard header={"Healt"} />
-                    <GreenCard header={"Climate"} />
-                    <GreenCard header={"Propagation"} />
-                    <GreenCard header={"Soil"} />
+                    <GreenCard header={"Uses"} Uses={Uses} />
+                    <GreenCard header={"Health"} Uses={Health}/>
+                    <GreenCard header={"Climate"} Uses={Climate} />
+                    <GreenCard header={"Soil"}  Uses={Soil}/>
                 </View>
 
             </ScrollView>
