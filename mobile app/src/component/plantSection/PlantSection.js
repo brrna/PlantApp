@@ -3,7 +3,7 @@ import createStyles from "./PlantSectionStyle";
 import DropShadow from "react-native-drop-shadow";
 import GreenCard from "../greenCard/GreenCard";
 
-function PlantSection({ Plantname,Description,Uses,Health,Climate,Soil }) {
+function PlantSection({ Plantname,Description,Uses,Health,Climate,Soil,plantImage = [""] }) {
 
     const styles = createStyles();
 
@@ -14,7 +14,7 @@ function PlantSection({ Plantname,Description,Uses,Health,Climate,Soil }) {
                 <View style={styles.imageView} >
                     <DropShadow style={styles.shadow} >
                         <Image
-                            source={require("../../assests/images/bitki.jpeg")}
+                            source={plantImage}
                             style={styles.image} />
                     </DropShadow>
                 </View>

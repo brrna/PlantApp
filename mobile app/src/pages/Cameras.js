@@ -126,6 +126,7 @@ function Cameras() {
                      Uses={responseref.current.Uses}
                      Health={responseref.current.Health}
                      Climate={responseref.current.Climate}
+                     plantImage={{uri: responseref.current.Image}}
                      Soil={responseref.current.Soil}/> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
 
                 ) : (

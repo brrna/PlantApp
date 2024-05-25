@@ -4,13 +4,39 @@ import DropShadow from "react-native-drop-shadow";
 import { useState } from "react";
 import PlantSection from "../plantSection/PlantSection";
 
+
 function PlantsCard(props) {
 
+
     const styles = createStyles();
+   
 
     const [modalVisible, setModalVisible] = useState(false);
 
     const {plantName, plantImage = [""]} = props;
+
+    
+    // useEffect(() => {
+        
+    //     axios.post(`https://leaflove.com.tr/mobil/plant-detail`,
+    //     {
+    //         headers: { Authorization: `Bearer ${userInfo.token}`},
+    //         params: { plant_user_id: userInfo.user.Id }
+    //     }
+    //     )
+    //         .then((response) => {
+    //             console.log("response data",response.data)
+    //             setData(response.data);
+               
+    //         })
+    //         .catch((error) => {
+    //             console.error("API isteği sırasında bir hata oluştu:", error);
+    //         });
+    // }, [])
+    // console.log("datam",data)
+    
+
+  
 
     return (
         <View style={styles.container} >
@@ -19,6 +45,10 @@ function PlantsCard(props) {
                     style={{flex: 1}}
                     animationType="slide"
                     transparent={true}
+                    onRequestClose={() => {
+                        setModalVisible(!modalVisible)
+                    }} 
+                  
                     visible={modalVisible}>
                         <PlantSection />
                 </Modal>
@@ -37,7 +67,7 @@ function PlantsCard(props) {
                     </View>
                     <View style={styles.iconView} >
                         <Image 
-                            source={require("../../assests/images/outlineStar.png")}/>
+                            source={require("../../assests/images/leafIcon.png")}/>
                     </View>
                 </TouchableOpacity>
             </DropShadow>
