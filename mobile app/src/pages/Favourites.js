@@ -3,27 +3,39 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import MySecondHeader from "../component/myBackHeader/MySecondHeader";
 import MySearch from "../component/mySearch/MySearch";
 import WhiteButton from "../component/whiteButton/WhiteButton";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MiniCard from "../component/myMiniCard/MiniCard";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import { useFocusEffect } from '@react-navigation/native';
 
-function Favorites({ navigation }) {
+
+function Favorites(props) {
+
+  const  {navigation} = props;
 
     const [data, setData] = useState([]);
 
     const {userInfo} = useContext(AuthContext);
 
-    useEffect(()=>{
-        console.log("data güncellendei",data)
-    },[data])
+    useFocusEffect(                         //usefeectimiz sağlıklı tetiklenmiyorsa sayfa her açıldığında tetiklenir burada favorileri anında tetiklemek için kullandık
+        React.useCallback(() => {
+            getFavorites();
+            console.log("usefocucefetcet")  
+        }, [])
+      );
+
+
 
     const renderFavorites = ({item}) => {
         return(
             <MiniCard
                 plantImage={{uri: item.Image}}
                 plantName={item.Name}
-                description={item.Description} />
+                description={item.Description} 
+                onDelete={()=>{getFavorites()  /// hemen gitmesi için eklendi
+
+                }}/>
         )
     }
 
@@ -31,21 +43,29 @@ function Favorites({ navigation }) {
         return item.id ? item.id.toString() : Math.random().toString();
     }
 
-    useEffect(() => {
-        console.log(data)
-        axios.get(`https://leaflove.com.tr/mobil/favorites`,
-        {
-            headers: { Authorization: `Bearer ${userInfo.token}`},
-            params: { user_id: userInfo.user.Id }
-        }
-        )
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch((error) => {
-                console.error("API isteği sırasında bir hata oluştu:", error);
-            });
-    }, [])
+
+   const getFavorites=()=>{   // useefcet yerine fokssiyonu yazdık
+    axios.get(`https://leaflove.com.tr/mobil/favorites`,
+    {
+        headers: { Authorization: `Bearer ${userInfo.token}`},
+        params: { user_id: userInfo.user.Id }
+    }
+    )
+        .then((response) => {
+            setData(response.data);
+        })
+        .catch((error) => {
+            console.error("API isteği sırasında bir hata oluştu:", error);
+        });
+    
+
+    }
+
+    // useEffect(() => {   // useefeceti buraya koyduk
+    //     console.log(data)
+    //    getFavorites()
+    //    console.log("usefeffet tetiklendi")
+    // }, [props])
 
     return (
         <SafeAreaView style={styles.container}>

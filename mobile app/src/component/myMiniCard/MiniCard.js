@@ -5,11 +5,12 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
+
 function MiniCard(props) {
 
     const styles = createStyles();
 
-    const {plantName, plantImage = [""], description} = props;
+    const {plantName, plantImage = [""], description,onDelete} = props;
 
     const [modalVisible, setModalVisible] = useState(false);
     const [fillStar, setFillStar] = useState(true);
@@ -28,6 +29,8 @@ function MiniCard(props) {
             )
             .then(response => {
                 console.log("favrorilerden çıkarıldı", response.data)
+                if (typeof onDelete==="function")  // hemen gitmesi için doluysa onDeleteye gitmesi için
+                    onDelete()
             })
             .catch(error => {
                 console.log("hata", error)

@@ -33,10 +33,13 @@ function MyPlants({ navigation }) {
     console.log("datam",data)
 
     const renderPlants = ({item}) => {
+        console.log("item",item)
         return(
             <PlantsCard
                 plantImage={{uri: item.Image}}
                 plantName={item.Name}
+                plantUserId={item.PlantUserId}
+                Item={item}
             />
         )
     }
