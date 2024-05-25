@@ -14,6 +14,7 @@ function MyCard(props) {
     const {userInfo} = useContext(AuthContext)
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [star, setStar] = useState(true)
 
     const handleFavori = () => {
         let roseId = null;
@@ -42,6 +43,10 @@ function MyCard(props) {
         })
     }
 
+    const toggleImage = () => {
+        setStar(false)
+    };
+
     return (
         <View style={styles.background} >
             <View style={styles.frameFirst} >
@@ -67,8 +72,15 @@ function MyCard(props) {
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                     style={styles.buttonView} 
-                                    onPress={handleFavori} >
-                                    <Image source={require("../../assests/images/outlineStar.png")} />
+                                    onPress={() => {
+                                        handleFavori();
+                                        toggleImage();
+                                    }} >
+                                    <Image 
+                                        source={
+                                            star ? require("../../assests/images/outlineStar.png")
+                                            : require("../../assests/images/fillStar.png")
+                                        } />
                                 </TouchableOpacity>
                             </View>
                         </View>

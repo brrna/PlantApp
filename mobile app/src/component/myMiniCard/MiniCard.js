@@ -12,6 +12,7 @@ function MiniCard(props) {
     const {plantName, plantImage = [""], description} = props;
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [fillStar, setFillStar] = useState(true);
 
     const {userInfo} = useContext(AuthContext);
 
@@ -33,6 +34,10 @@ function MiniCard(props) {
             })
         )
     }
+
+    const toggleImage = () => {
+        setFillStar(false);
+    };
 
     return (
         <View style={styles.container} >
@@ -59,8 +64,14 @@ function MiniCard(props) {
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                     style={styles.buttonView}
-                                    onPress={removeFavori} >
-                                    <Image source={require("../../assests/images/fillStar.png")} />
+                                    onPress={() => {
+                                        removeFavori();
+                                        toggleImage();
+                                    }} >
+                                    <Image source={
+                                        fillStar ? require("../../assests/images/fillStar.png") 
+                                        : require("../../assests/images/outlineStar.png")
+                                    } />
                                 </TouchableOpacity>
                             </View>
                         </View>
