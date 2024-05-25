@@ -10,6 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 
 import { Base_URL } from "@env"
 import PlantSection from "../component/plantSection/PlantSection";
+import MyHeader from "../component/myHeader/MyHeader";
 
 function Cameras() {
     const devices = Camera.getAvailableCameraDevices()
@@ -23,6 +24,7 @@ function Cameras() {
     const [responseData, setResponseData] = useState(null);
     const [denemeData, setDenemeData] = useState({});
     const { userInfo } = useContext(AuthContext)
+    const [error, setError] = useState(null);
 
     const responseref=useRef("")
 
@@ -84,6 +86,10 @@ function Cameras() {
              setModalVisible(true);
          } catch (error) {
             console.error("Error sending image: ", error);
+            setError("No results faund.");
+            setModalVisible(true)
+          
+
         }
      };
     
@@ -130,8 +136,17 @@ function Cameras() {
                      Soil={responseref.current.Soil}/> // şu dik çizgiler or gibi düşünmeye yarar soru işareti koyarsak crash almaz
 
                 ) : (
-                    <View>
-                       <Text>Sonuç yok</Text> 
+                    <View style={styles.noresutls}>
+                        <MyHeader/>
+                        <View style={{justifyContent:"center",flex:1,marginBottom:hp(13)}}>
+                            <View style={styles.pinkview}>
+                                <Text style={styles.noresultstext}>No results found  </Text>
+                                <Text style={styles.noresultstext}>called "search for</Text>
+                                <Text style={styles.noresultstext}>your plants"</Text>
+                            </View>
+                        </View>
+                        
+                      <Text>{error ? error : "No result found"}</Text> 
                     </View>
                 )}
             </Modal>
@@ -218,6 +233,28 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         flex: 1,
+    },
+    noresutls:{
+        flex:1,
+        backgroundColor:"background: rgba(242, 255, 248, 1)",
+
+        
+    },
+    pinkview: {
+        height: hp(23),
+        width: wp(58),
+        backgroundColor: "rgba(240, 238, 238, 1)",
+        alignSelf: "center",
+        borderRadius: hp(2),
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: "rgba(225, 56, 56, 1)",
+        paddingLeft: wp(9), // Added padding to align text
+    },
+    noresultstext: {
+        fontSize: 21,
+        color: "rgba(0, 0, 0, 0.47)",
+        fontWeight: "800"
     }
 })
 
