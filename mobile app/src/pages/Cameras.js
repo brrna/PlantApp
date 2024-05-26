@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
         paddingLeft: wp(9), // Added padding to align text
     },
     noresultstext: {
-        fontSize: 21,
+        fontSize: hp(2.7),
         color: "rgba(0, 0, 0, 0.47)",
         fontWeight: "800"
     }
