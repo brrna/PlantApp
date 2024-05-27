@@ -44,6 +44,7 @@
 .image {
     height: 35px;
     width: 35px;
+    cursor: pointer;
 }
 .textView{
     background-color: rgba(148, 233, 151, 1);

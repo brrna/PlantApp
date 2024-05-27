@@ -5,8 +5,7 @@ function Header() {
 
     const handleClick = () => {
         console.log('Image clicked!');
-        // Bu kısma yönlendirme veya başka işlemler ekleyebilirsiniz
-        window.location.href = 'https://play.google.com/store/apps/details?id=com.denizlimoyunu&hl=tr&gl=US,','_blank'; // Örneğin, Google Play'e yönlendirme
+        window.open('https://play.google.com/store/apps/details?id=com.denizlimoyunu&hl=tr&gl=US', '_blank'); // Yeni sekmede açılır
     };
 
     return (    
