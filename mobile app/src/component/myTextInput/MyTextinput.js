@@ -24,7 +24,7 @@ const  styles=StyleSheet.create({
         borderRadius:hp(5),
         fontWeight:"bold",
         textAlign:"center",
-        color:"background: rgba(0, 0, 0, 0.63);"
+        color:"rgba(0, 0, 0, 0.63);"
 
     }
 
