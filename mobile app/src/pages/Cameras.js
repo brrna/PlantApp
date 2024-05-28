@@ -30,6 +30,12 @@ function Cameras() {
     const responseref=useRef("")
 
     useEffect(() => {
+        if (!modalVisible) {
+            responseref.current = "";
+        }
+    }, [modalVisible]);
+
+    useEffect(() => {
         checkPermission();
     }, []);
     console.log(imageData)
@@ -150,8 +156,6 @@ function Cameras() {
                                 <Text style={styles.noresultstext}>your plants"</Text>
                             </View>
                         </View>
-                        
-                      <Text>{error ? error : "No result found"}</Text> 
                     </View>
                 )}
             </Modal>
