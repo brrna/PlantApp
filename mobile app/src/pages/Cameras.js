@@ -7,7 +7,7 @@ import RNFS from 'react-native-fs';
 import axios from 'axios'
 import ImageResizer from 'react-native-image-resizer';
 import { AuthContext } from "../context/AuthContext";
-
+import Spinner from "react-native-loading-spinner-overlay";
 import { Base_URL } from "@env"
 import PlantSection from "../component/plantSection/PlantSection";
 import MyHeader from "../component/myHeader/MyHeader";
@@ -25,6 +25,7 @@ function Cameras() {
     const [denemeData, setDenemeData] = useState({});
     const { userInfo } = useContext(AuthContext)
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const responseref=useRef("")
 
@@ -63,6 +64,7 @@ function Cameras() {
     }
 
     const sendImage = async () => {
+        setIsLoading(true);
          try {
             const response = await axios.post(
                 `${Base_URL}/mobil/plant-upload`,
@@ -83,10 +85,12 @@ function Cameras() {
              
              setResponseData(response.data)
             console.log("response.data",response.data);
+             setIsLoading(false)
              setModalVisible(true);
          } catch (error) {
             console.error("Error sending image: ", error);
             setError("No results faund.");
+            setIsLoading(false)
             setModalVisible(true)
           
 
@@ -120,6 +124,7 @@ function Cameras() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Spinner visible={isLoading}/>
             <Modal
                 onRequestClose={() => {
                     setModalVisible(!modalVisible)
