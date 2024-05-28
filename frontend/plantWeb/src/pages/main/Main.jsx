@@ -14,7 +14,7 @@ function Main() {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState([])
 
     useEffect(() => {
         axios.get("/api/web/plants")
@@ -31,9 +31,9 @@ function Main() {
     const handleSearch = (searchText) => {
         setSearchTerm(searchText);
         const lowerCaseSearchText = searchText.toLowerCase();
-        const filteredList = data.filter(item => {
+        const filteredList = data.filter(item => 
             item.Name.toLowerCase().includes(lowerCaseSearchText)
-        });
+        );
         setFilteredData(filteredList)
     }
 

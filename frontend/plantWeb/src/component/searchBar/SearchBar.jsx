@@ -4,7 +4,7 @@ import "./SearchBar.css"
 function SearchBar({onSearch, searchTerm}) {
 
     const handleChange = (event) => {
-        onSearch(event.targetvalue);
+        onSearch(event.target.value);
     };
 
     return (
@@ -15,7 +15,7 @@ function SearchBar({onSearch, searchTerm}) {
                     className="input" 
                     placeholder="Search about plants" 
                     value={searchTerm}
-                    onChange={onSearch} />
+                    onChange={handleChange} />
             </div>
             <button className="buttonFrame" >
                 <span className="buttonName" >Submit</span>
