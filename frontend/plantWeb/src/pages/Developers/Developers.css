@@ -2,5 +2,41 @@
     height: 100vh;
     background-color: rgba(231, 231, 231, 0.91);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around
+   
+  }
+
+  .columcontain{
+    width: 350px;
+    height: 700px;
+    background-color: green;
+    align-items: center;
+   
+  }
+
+  .resimoutout{
+    width: 300px;
+    height: 337px;
+    background-color: red;
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tittle{
+    width: 215px;
+    height: 33px;
+    border-radius: 20px;
+    background-color:  rgba(217, 217, 217, 1);
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tittletext{
+    color:  rgba(0, 0, 0, 1);
+    font-weight: bold;
   }
