@@ -48,13 +48,16 @@
     align-items: flex-end;
 }
 .cardsDiv{
-    background-color:  rgba(231, 231, 231, 1);
+    background-color: rgba(231, 231, 231, 1);
     height: 77%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; 
     align-items: flex-start;
+    overflow-y: auto; 
+    padding: 16px; 
+    box-sizing: border-box;
 }
 .Rightdiv{
     background-color: rgba(231, 231, 231, 1);
