@@ -1,9 +1,8 @@
 import { SafeAreaView, View, StyleSheet, FlatList} from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MySecondHeader from "../component/myBackHeader/MySecondHeader";
-import MySearch from "../component/mySearch/MySearch";
 import WhiteButton from "../component/whiteButton/WhiteButton";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import MiniCard from "../component/myMiniCard/MiniCard";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -61,12 +60,6 @@ function Favorites(props) {
 
     }
 
-    // useEffect(() => {   // useefeceti buraya koyduk
-    //     console.log(data)
-    //    getFavorites()
-    //    console.log("usefeffet tetiklendi")
-    // }, [props])
-
     return (
         <SafeAreaView style={styles.container}>
 
@@ -74,7 +67,6 @@ function Favorites(props) {
                 headerText={"Favourites"}
                 onPress={() => navigation.navigate('ProfileScreen')} />
 
-            <MySearch onPress={() => navigation.navigate('ProfileScreen')} />
 
             <View style={styles.buttonView} >
 
