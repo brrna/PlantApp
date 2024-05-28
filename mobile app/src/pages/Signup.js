@@ -16,7 +16,7 @@ function Signup({ navigation }) {
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
 
-    const {register,isLoading}= useContext(AuthContext);
+    const {register,isLoading,userMessage}= useContext(AuthContext);
 
     const togglePasswordVisibility = () => {
         setSecureTextEntry(prev => !prev);
@@ -60,8 +60,15 @@ function Signup({ navigation }) {
                             <TouchableOpacity onPress={()=> navigation.navigate("Signin")}>
                                 <Text style={styles.siginblue} >Sign In</Text>
                             </TouchableOpacity>
+                            
 
                         </View>
+                        {
+                           userMessage?
+                           (
+                            <Text style={styles.usermmesage}> {userMessage}</Text>
+                           ):null
+                        }
                     </View>
 
                 </View>
@@ -135,6 +142,10 @@ const styles = StyleSheet.create({
     siginblue: {
         color: "background: rgba(18, 80, 173, 0.63);",
         fontWeight: "bold"
+    },
+    usermmesage:{
+        color: "red",
+        marginTop:hp(1)
     }
 })
 export default Signup;

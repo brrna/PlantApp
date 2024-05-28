@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [splashLoading,setSplashLoading]=useState(false);
+  const [userMessage,setUserMessage] = useState("")
 
   const register = (email, nickname, password) => {
     setIsLoading(true);
@@ -24,11 +25,12 @@ export const AuthProvider = ({ children }) => {
       AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
       setIsLoading(false);
       console.log(userInfo);
-
+      setUserMessage("Registration successful please Sign in!!")
 
     }).catch(e => {
       console.log(`register error ${e}`);
       setIsLoading(false)
+      setUserMessage("Something went wrong, please check again !!")
     })
   };
 
@@ -102,7 +104,8 @@ export const AuthProvider = ({ children }) => {
       login,
       logout,
       isLoggedIn,
-      splashLoading
+      splashLoading,
+      userMessage
     }}>
       {children}
     </AuthContext.Provider>
