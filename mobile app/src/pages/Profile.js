@@ -2,15 +2,21 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacit
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
 import DropShadow from "react-native-drop-shadow";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
+import { useFocusEffect } from '@react-navigation/native';
+
 function Profile({ navigation }) {
 
-    useEffect(()=>{
-            getFavorites()
-    },[])
+    
+    useFocusEffect(      //usefeectimiz sağlıklı tetiklenmiyorsa sayfa her açıldığında tetiklenir burada favorileri anında tetiklemek için kullandık
+        React.useCallback(() => {
+            getFavorites();
+            console.log("usefocucefetcet")  
+        }, [])
+      );
 
     useEffect(() => {
         
@@ -43,6 +49,7 @@ function Profile({ navigation }) {
         )
             .then((response) => {
                 setData(response.data.length);
+   
             })
             .catch((error) => {
                 console.error("API isteği sırasında bir hata oluştu:", error);
