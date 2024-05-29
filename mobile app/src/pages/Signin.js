@@ -14,7 +14,7 @@ function Signin({ navigation }) {
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
 
-    const {login,isLoading} = useContext(AuthContext)
+    const {login,isLoading,userMessageSignin} = useContext(AuthContext)
     const togglePasswordVisibility = () => {
         setSecureTextEntry(prev => !prev);
     };
@@ -49,7 +49,14 @@ function Signin({ navigation }) {
                     <TouchableOpacity onPress={()=> navigation.navigate("Signup")}>
                         <Text style={styles.signuptext}>Sign Up</Text>
                     </TouchableOpacity>
+                    
                 </View>
+                {
+                           userMessageSignin?
+                           (
+                            <Text style={styles.usermmesage}> {userMessageSignin}</Text>
+                           ):null
+                        }
             </SafeAreaView>
 
         </KeyboardAwareScrollView>
@@ -113,6 +120,10 @@ const styles = StyleSheet.create({
     textaccount: {
         fontWeight: "bold",
         color:"background: rgba(77, 95, 121, 0.63);"
+    },
+    usermmesage:{
+        color: "red",
+        marginTop:hp(1)
     }
 });
 

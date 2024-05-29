@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
   const [splashLoading,setSplashLoading]=useState(false);
   const [userMessage,setUserMessage] = useState("")
+  const [userMessageSignin,setUserMessageSignin] = useState("")
 
   const register = (email, nickname, password) => {
     setIsLoading(true);
@@ -49,6 +50,7 @@ export const AuthProvider = ({ children }) => {
     }).catch(e=>{
       console.log(`login error ${e}`);
       setIsLoading(false)
+      setUserMessageSignin("Your password or email is incorrect please check!")
     })
   };
 
@@ -105,7 +107,8 @@ export const AuthProvider = ({ children }) => {
       logout,
       isLoggedIn,
       splashLoading,
-      userMessage
+      userMessage,
+      userMessageSignin
     }}>
       {children}
     </AuthContext.Provider>
