@@ -2,12 +2,54 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Pressable, TouchableOpacit
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import MyHeader from "../component/myHeader/MyHeader";
 import DropShadow from "react-native-drop-shadow";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 function Profile({ navigation }) {
 
+    useEffect(()=>{
+            getFavorites()
+    },[])
+
+    useEffect(() => {
+        
+        axios.get(`https://leaflove.com.tr/mobil/plants`,
+        {
+            headers: { Authorization: `Bearer ${userInfo.token}`},
+            params: { user_id: userInfo.user.Id }
+        }
+        )
+            .then((response) => {
+                setPlantsData(response.data.length);
+               
+            })
+            .catch((error) => {
+                console.error("API isteği sırasında bir hata oluştu:", error);
+            });
+    }, [])
+
+    
     const { userInfo, logout } = useContext(AuthContext);
+    const [data, setData] = useState([]);
+    const [plantsData,setPlantsData]=useState([]);
+
+    const getFavorites=()=>{   // useefcet yerine fokssiyonu yazdık
+        axios.get(`https://leaflove.com.tr/mobil/favorites`,
+        {
+            headers: { Authorization: `Bearer ${userInfo.token}`},
+            params: { user_id: userInfo.user.Id }
+        }
+        )
+            .then((response) => {
+                setData(response.data.length);
+            })
+            .catch((error) => {
+                console.error("API isteği sırasında bir hata oluştu:", error);
+            });
+        
+    
+        }
 
 
     return (
@@ -42,7 +84,7 @@ function Profile({ navigation }) {
                         <Image
                             source={require("../assests/images/leafIcon.png")} />
 
-                        <Text style={styles.textStyle}>54</Text>
+                        <Text style={styles.textStyle}>{plantsData}</Text>
 
                         <Text style={styles.textStyle}>My Plants</Text>
                     </View>
@@ -52,7 +94,7 @@ function Profile({ navigation }) {
                         <Image source={(require("../assests/images/starIcon.png"))} />
 
                         <View style={styles.text} >
-                            <Text style={styles.textStyle}>54</Text>
+                            <Text style={styles.textStyle}>{data}</Text>
 
                             <Text style={styles.textStyle}>Favorite</Text>
                         </View>
