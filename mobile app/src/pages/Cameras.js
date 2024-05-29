@@ -152,8 +152,7 @@ function Cameras() {
                         <View style={{justifyContent:"center",flex:1,marginBottom:hp(13)}}>
                             <View style={styles.pinkview}>
                                 <Text style={styles.noresultstext}>No results found  </Text>
-                                <Text style={styles.noresultstext}>called "search for</Text>
-                                <Text style={styles.noresultstext}>your plants"</Text>
+   
                             </View>
                         </View>
                     </View>
